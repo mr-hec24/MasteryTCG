@@ -1,12 +1,8 @@
-import java.awt.Image;
 
-public class Card
+public class Effects
 	{
 		protected String name;
 		protected String description;
-		protected Image image;
-		
-		
 		public String getName()
 			{
 				return name;
@@ -22,13 +18,5 @@ public class Card
 		public void setDescription(String description)
 			{
 				this.description = description;
-			}
-		public Image getImage()
-			{
-				return image;
-			}
-		public void setImage(Image image)
-			{
-				this.image = image;
 			}
 	}

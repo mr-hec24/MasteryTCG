@@ -1,0 +1,56 @@
+
+public class Attack extends Effects
+	{
+		protected int range;
+		protected int numberOfDice;
+		protected int typeOfDice;
+		
+		public Attack (String n, String d, int r, int nod, int tod)
+		{
+			name = n;
+			description = d;
+			range = r;
+			numberOfDice = nod;
+			typeOfDice = tod;
+		}
+		
+		public int damage()
+		{
+			int damage = 0;
+			for (int i = 0; i < numberOfDice; i++)
+				damage += (int)(Math.random()*typeOfDice) + 1;
+			
+			return damage;
+		}
+
+		public int getRange()
+			{
+				return range;
+			}
+
+		public void setRange(int range)
+			{
+				this.range = range;
+			}
+
+		public int getNumberOfDice()
+			{
+				return numberOfDice;
+			}
+
+		public void setNumberOfDice(int numberOfDice)
+			{
+				this.numberOfDice = numberOfDice;
+			}
+
+		public int getTypeOfDice()
+			{
+				return typeOfDice;
+			}
+
+		public void setTypeOfDice(int typeOfDice)
+			{
+				this.typeOfDice = typeOfDice;
+			}
+		
+	}
