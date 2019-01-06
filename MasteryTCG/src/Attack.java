@@ -22,35 +22,5 @@ public class Attack extends Effects
 			
 			return damage;
 		}
-
-		public int getRange()
-			{
-				return range;
-			}
-
-		public void setRange(int range)
-			{
-				this.range = range;
-			}
-
-		public int getNumberOfDice()
-			{
-				return numberOfDice;
-			}
-
-		public void setNumberOfDice(int numberOfDice)
-			{
-				this.numberOfDice = numberOfDice;
-			}
-
-		public int getTypeOfDice()
-			{
-				return typeOfDice;
-			}
-
-		public void setTypeOfDice(int typeOfDice)
-			{
-				this.typeOfDice = typeOfDice;
-			}
 		
 	}

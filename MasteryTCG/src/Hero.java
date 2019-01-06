@@ -1,4 +1,4 @@
-1,import java.util.ArrayList;
+import java.util.ArrayList;
 import java.awt.Image;
 
 public class Hero extends Card
@@ -10,7 +10,7 @@ public class Hero extends Card
 		protected int toHitModifier;
 		protected int armorClass;
 		
-		public Hero (String n, String d, Image i, int lvl, int hp, int sp, ArrayList<Effects> c, int hm, int ac)
+		public Hero (String n, String d, String i, int lvl, int hp, int sp, ArrayList<Effects> c, int hm, int ac)
 		{
 			name = n;
 			description = d;
