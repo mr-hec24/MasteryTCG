@@ -27,11 +27,18 @@ public class TestRunner
 										if (((Ability)e).typeOfDice == 0 && ((Ability)e).range == 0)
 										{
 											System.out.println(e.name);
+											System.out.println(((Ability)e).effect);
 											
 										}
 										else if (((Ability)e).typeOfDice == 0)
 										{
-											System.out.printf("%-20s     Range: %-2d",e.name, ((Ability)e).range);
+											System.out.printf("%-20s     Range: %-2d \n",e.name, ((Ability)e).range);
+											System.out.println(((Ability)e).effect + "\n");
+										}
+										else
+										{
+											System.out.printf("%-20s     Range: %-2d     Damage %2d d %-2d \n",e.name, ((Ability)e).range, ((Ability)e).numberOfDice, ((Ability)e).typeOfDice);
+											System.out.println(((Ability)e).effect + "\n");
 										}
 									}
 							}
