@@ -48,6 +48,8 @@ public class FillDeck
 				// The Wanna-Be Kryptonian
 				deck.add(new Supporter("The Wanna-Be Kryptonian", "This guy loves DC so much, that he believes himself to be a Kryptonian, just like Superman.", "All your Heroes in the Players' Arena gain 2 more AC during this turn. They all deal 5 more damage next turn.", ""));
 			
+				// The Optimistic Sisters
+				deck.add(new Supporter("The Optimistic Sisters","","",""));
 			}
 			
 			return deck;
