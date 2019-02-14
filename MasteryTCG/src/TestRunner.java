@@ -4,7 +4,7 @@ public class TestRunner
 	{
 		public static void main(String[] args)
 		{
-			ArrayList<Card> deck = FillDeck.fillDeck();
+			ArrayList<Card> deck = FirstDeck.fillDeck();
 			
 			for (Card c : deck)
 			{
