@@ -55,13 +55,13 @@ public class FirstDeck
 			// Trap Cards
 			{
 				// The Exploding Tennis Ball
-				deck.add(new Trap());
+				deck.add(new Trap("The Exploding Tennis Ball", "This is an invention of the Drunk Pyromancer, created to kill off his enemies, anonymously.", "image.jpg", "The Hero that lands on this Trap takes 6 fire damage.", true));
 				
 				//The Shoe Trap
-				deck.add(new Trap());
+				deck.add(new Trap("The Shoes Trap", "This is another invention of the Margarita Mixer, who uses them when he's thirsty for blood", "image.jpg", "The Hero that lands on this Trap cannot move from this square for 2 rounds.", true));
 				
 				// Cholesterol Club
-				deck.add(new Trap());
+				//deck.add(new Trap());
 			}
 			
 			return deck;
