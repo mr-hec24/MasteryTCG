@@ -61,7 +61,12 @@ public class FirstDeck
 				deck.add(new Trap("The Shoes Trap", "This is another invention of the Margarita Mixer, who uses them when he's thirsty for blood", "image.jpg", "The Hero that lands on this Trap cannot move from this square for 2 rounds.", true));
 				
 				// Cholesterol Club
-				//deck.add(new Trap());
+				deck.add(new Trap("Cholesterol Club", "This club dedicates its time to block out hallways in it's school, just like the cholesterol in your blood.", "image.jpg", "No Hero can land on or go over the square this Trap is on for 3 rounds.", false));
+			}
+			
+			// Item Cards
+			{
+				
 			}
 			
 			return deck;
