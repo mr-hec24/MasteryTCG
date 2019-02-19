@@ -66,7 +66,26 @@ public class FirstDeck
 			
 			// Item Cards
 			{
+				// Amulet Of Health
+				deck.add(new Item("Amulet Of Health", "This Amulet was discovered on the 1200 year old space captain, the Mullen Meme Master", "image.jpg", "The Host's base HP is increased by 5."));
 				
+				// Dagger
+				deck.add(new Item("Dagger","This is an ordinary, pointy, dangerous dagger, confiscated from the Ninja Bretheren","image.jpg","The Host's base To Hit Modifier is incresed by 2."));
+				
+				// Boots Of Speed
+				deck.add(new Item("Boots Of Speed","Several Olympians were caught cheating in races by wearing these speed enhancing boots.","image.jpg","The Host's speed is incresed by 1."));
+			}
+			
+			// Spell Cards
+			{
+				// Ray Of Frost
+				deck.add(new Spell());
+				
+				// Fog Of Misdirection
+				deck.add(new Spell());
+				
+				// Rain Of Arrows
+				deck.add(new Spell());
 			}
 			
 			return deck;

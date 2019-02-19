@@ -9,7 +9,6 @@ public class Hero extends Card
 		protected ArrayList<Effects> cardAbilities;
 		protected int toHitModifier;
 		protected int armorClass;
-		protected boolean hasItemAttatched;
 		protected Item item;
 		
 		public Hero (String n, String d, String i, int lvl, int hp, int sp, ArrayList<Effects> c, int hm, int ac)
@@ -23,7 +22,7 @@ public class Hero extends Card
 			cardAbilities = c;
 			toHitModifier = hm; 
 			armorClass = ac;
-			hasItemAttatched = false;
+			item = null;
 		}
 		
 		public void attatchItem(Item item)

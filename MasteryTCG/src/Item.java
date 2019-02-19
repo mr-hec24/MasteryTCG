@@ -6,11 +6,12 @@ public class Item extends Card
 		protected Hero host;
 		protected String effect;
 		
-		public Item (String n, String d, String i, String e, Hero h)
+		public Item (String n, String d, String i, String e)
 			{
 				name = n;
 				description = d;
 				image = i;
 				effect = e;
+				host = null;
 			}
 	}
