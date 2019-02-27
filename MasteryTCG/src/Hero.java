@@ -26,9 +26,9 @@ public class Hero extends Card
 		}
 		
 		public void attatchItem(Item item)
-		{
-			this.item = item; 
-		}
+			{
+				this.item = item; 
+			}
 
 		public int getLevel()
 			{
