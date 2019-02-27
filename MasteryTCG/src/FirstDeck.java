@@ -79,13 +79,13 @@ public class FirstDeck
 			// Spell Cards
 			{
 				// Ray Of Frost
-				deck.add(new Spell());
+				deck.add(new Spell("Ray Of Frost", "You concentrate all your energy to your fingers. Finally, a ray of frost shoots from them.", "image.jpg", "All Heroes on the Players' Arena cannot move for 1 round. (Heroes from the Summoning Portal still move)", 2));
 				
 				// Fog Of Misdirection
-				deck.add(new Spell());
+				deck.add(new Spell("Fog Of Misdirection", "As you close your eyes, you extend your hands as a thick fog comes out of them, engulfing everyone around you.", "image.jpg", "For 3 rounds, when a Player wants to move a Hero, roll a d4 to determine where they go. (1=up, 2=down, 3=left, 4=right)", 3));
 				
 				// Rain Of Arrows
-				deck.add(new Spell());
+				deck.add(new Spell("Rain Of Arrows", "As you hear the thunder far off, you look up and notice that this storm, is not a regular one.", "image.jpg", "Deal 5 damage to all Heroes on the Players' Arena", 1));
 			}
 			
 			return deck;
