@@ -88,6 +88,13 @@ public class FirstDeck
 				deck.add(new Spell("Rain Of Arrows", "As you hear the thunder far off, you look up and notice that this storm, is not a regular one.", "image.jpg", "Deal 5 damage to all Heroes on the Players' Arena", 1));
 			}
 			
+			// Energy Cards
+			{
+				// Normal Energy Cards
+				
+				// Healing Energy Cards
+			}
+			
 			return deck;
 		}
 	}
