@@ -4,7 +4,7 @@ public class TestRunner
 	{
 		public static void main(String[] args)
 		{
-			ArrayList<Card> deck = FirstDeck.fillDeck();
+			ArrayList<Card> deck = Documentization.documentCards();
 			
 			for (Card c : deck)
 			{
@@ -54,7 +54,11 @@ public class TestRunner
 				
 				else if (c instanceof Supporter) // If The Card Is A Supporter Card
 					{
-						
+						System.out.printf("%-20s \n", c.name);
+						System.out.printf("%-100s \n", c.description);
+						System.out.printf("%-100s \n", ((Supporter)c).effect);
+						System.out.println("\n__________________________________________________________________________________________________________________________________\n");					
+						System.out.println(" ");
 					}
 				
 				else if (c instanceof Item) // If The Card Is An Item Card
