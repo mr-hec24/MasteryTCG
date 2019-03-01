@@ -1,13 +1,16 @@
 import java.util.ArrayList;
+import java.text.*;
 
 public class TestRunner
 	{
 		public static void main(String[] args)
 		{
 			ArrayList<Card> deck = Documentization.documentCards();
-			
+			int cardId = 0;
 			for (Card c : deck)
 			{
+				DecimalFormat number = new DecimalFormat("000");
+				System.out.println(number.format(cardId));
 				
 				if (c instanceof Hero) // If The Card Is A Hero Card
 					{
@@ -63,17 +66,29 @@ public class TestRunner
 				
 				else if (c instanceof Item) // If The Card Is An Item Card
 					{
-						
+						System.out.printf("%-20s \n", c.name);
+						System.out.printf("%-100s \n", c.description);
+						System.out.printf("%-100s \n", ((Item)c).effect);
+						System.out.println("\n__________________________________________________________________________________________________________________________________\n");					
+						System.out.println(" ");
 					}
 				
 				else if (c instanceof Spell) // If The Card Is A Spell Card
 					{
-						
+						System.out.printf("%-20s          Cost: %-2dEnergy\n", c.name, ((Spell)c).cost);
+						System.out.printf("%-100s \n", c.description);
+						System.out.printf("%-100s \n", ((Spell)c).effect);
+						System.out.println("\n__________________________________________________________________________________________________________________________________\n");					
+						System.out.println(" ");
 					}
 				
 				else if (c instanceof Trap) // If The Card Is A Trap Card
 					{
-						
+						System.out.printf("%-20s     " + "" + "\n", c.name);
+						System.out.printf("%-100s \n", c.description);
+						System.out.printf("%-100s \n", ((Trap)c).effect);
+						System.out.println("\n__________________________________________________________________________________________________________________________________\n");					
+						System.out.println(" ");
 					}
 				
 				else if (c instanceof Energy) // If The Card Is A Energy Card
@@ -85,6 +100,8 @@ public class TestRunner
 					{
 						
 					}
+				
+				cardId++;
 			}
 		}
 	}
