@@ -1,9 +1,19 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class TestRunner
 	{
 		public static void main(String[] args)
 		{
+			try
+				{
+					FillDeck.askUserWhicDeck();
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			
 			ArrayList<Card> deck = FirstDeck.fillDeck();
 			
 			for (Card c : deck)
