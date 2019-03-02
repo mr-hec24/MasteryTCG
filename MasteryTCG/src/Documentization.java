@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Documentization
 	{
-		
+		//Added comment
 		public static ArrayList<Effects> documentEffects()
 		{
 			ArrayList<Effects> documentedEffects = new ArrayList<Effects>();
