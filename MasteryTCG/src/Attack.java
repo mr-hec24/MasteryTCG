@@ -4,6 +4,7 @@ public class Attack extends Effects
 		protected int range;
 		protected int numberOfDice;
 		protected int typeOfDice;
+		protected String effect;
 		
 		public Attack (String n, String d, int r, int nod, int tod) //Attack without effect
 		{
@@ -18,6 +19,7 @@ public class Attack extends Effects
 		{
 				name = n;
 				description = d;
+				effect = e;
 				range = r;
 				numberOfDice = nod;
 				typeOfDice = tod;

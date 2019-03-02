@@ -30,4 +30,13 @@ public class Ability extends Effects
 			numberOfDice = nd;
 			typeOfDice = td;
 		}
+		
+		public Ability(String n, String d, String e, int nd, int td)//Used for rolling non ranged abilities
+		{
+			name = n;
+			description = d;
+			effect = e;
+			numberOfDice = nd;
+			typeOfDice = td;
+		}
 	}
