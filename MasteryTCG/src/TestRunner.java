@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.text.*;
 
@@ -5,7 +6,17 @@ public class TestRunner
 	{
 		public static void main(String[] args)
 		{
-			ArrayList<Card> deck = Documentization.documentCards();
+			try
+				{
+					FillDeck.askUserWhicDeck();
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			
+			ArrayList<Card> deck = FirstDeck.fillDeck();
+			
 			int cardId = 0;
 			for (Card c : deck)
 			{
