@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Documentization
@@ -85,7 +86,7 @@ public class Documentization
 				documentedCards.add(new Trap("The Exploding Tennis Ball", "This is an invention of the Drunk Pyromancer, created to kill off his enemies, anonymously.", "image.jpg", "The Hero that lands on this Trap takes 6 fire damage.", true));
 				
 /*#009*/		//The Shoe Trap
-				documentedCards.add(new Trap("The Shoes Trap", "This is another invention of the Margarita Mixer, who uses them when he's thirsty for blood", "image.jpg", "The Hero that lands on this Trap cannot move from this square for 2 rounds.", true));
+				documentedCards.add(new Trap("The Shoe Trap", "This is another invention of the Margarita Mixer, who uses them when he's thirsty for blood", "image.jpg", "The Hero that lands on this Trap cannot move from this square for 2 rounds.", true));
 				
 /*#010*/		// Cholesterol Club
 				documentedCards.add(new Trap("Cholesterol Club", "This club dedicates its time to block out hallways in it's school, just like the cholesterol in your blood.", "image.jpg", "No Hero can land on or go over the square this Trap is on for 3 rounds.", false));
@@ -140,5 +141,107 @@ public class Documentization
 			}
 			
 			return documentedCards;
+		}
+
+		public static void printOutDocumentedInformation()
+		{
+			ArrayList<Card> deck = Documentization.documentCards();
+			int cardId = 0;
+			for (Card c : deck)
+			{
+				DecimalFormat number = new DecimalFormat("000");
+				System.out.println("CARD ID #" + number.format(cardId));
+				
+				if (c instanceof Hero) // If The Card Is A Hero Card
+					{
+						ArrayList<Effects> effects = ((Hero)c).cardAbilities;
+						
+						// Prints out the basic info of a Hero Card
+						System.out.printf("%-20s     Hit Points: %-2d      Armor Class: %-2d", ((Hero)c).name, ((Hero)c).hitpoints, ((Hero)c).armorClass);
+						System.out.printf("\nLevel %-2d                 Speed: %d            To Hit Modifier: +%-2d \n", ((Hero)c).level, ((Hero)c).speed, ((Hero)c).toHitModifier);
+						System.out.printf("%-100s\n \n", ((Hero)c).description);
+						
+						for (Effects e : effects)
+							{
+								// If The Effect Of A Hero Is An Attack, Print Out Attack Information
+								if (e instanceof Attack)
+									{
+										System.out.printf("%-20s     Range: %-2d     Damage: %2d d %-2d \n", e.name, ((Attack)e).range, ((Attack)e).numberOfDice, ((Attack)e).typeOfDice);
+										System.out.printf("%-100s\n\n", e.description);
+									}
+								// Else, Print Out Ability Information
+								else
+									{
+										if (((Ability)e).typeOfDice == 0 && ((Ability)e).range == 0)
+										{
+											System.out.println(e.name);
+											System.out.println(((Ability)e).effect);
+											
+										}
+										else if (((Ability)e).typeOfDice == 0)
+										{
+											System.out.printf("%-20s     Range: %-2d \n",e.name, ((Ability)e).range);
+											System.out.println(((Ability)e).effect + "\n");
+										}
+										else
+										{
+											System.out.printf("%-20s     Range: %-2d     Damage %2d d %-2d \n",e.name, ((Ability)e).range, ((Ability)e).numberOfDice, ((Ability)e).typeOfDice);
+											System.out.println(((Ability)e).effect + "\n");
+										}
+									}
+							}
+
+						System.out.println("__________________________________________________________________________________________________________________________________\n");					
+						System.out.println(" ");
+					}
+				
+				else if (c instanceof Supporter) // If The Card Is A Supporter Card
+					{
+						System.out.printf("%-20s \n", c.name);
+						System.out.printf("%-100s \n", c.description);
+						System.out.printf("%-100s \n", ((Supporter)c).effect);
+						System.out.println("\n__________________________________________________________________________________________________________________________________\n");					
+						System.out.println(" ");
+					}
+				
+				else if (c instanceof Item) // If The Card Is An Item Card
+					{
+						System.out.printf("%-20s \n", c.name);
+						System.out.printf("%-100s \n", c.description);
+						System.out.printf("%-100s \n", ((Item)c).effect);
+						System.out.println("\n__________________________________________________________________________________________________________________________________\n");					
+						System.out.println(" ");
+					}
+				
+				else if (c instanceof Spell) // If The Card Is A Spell Card
+					{
+						System.out.printf("%-20s          Cost: %-2dEnergy\n", c.name, ((Spell)c).cost);
+						System.out.printf("%-100s \n", c.description);
+						System.out.printf("%-100s \n", ((Spell)c).effect);
+						System.out.println("\n__________________________________________________________________________________________________________________________________\n");					
+						System.out.println(" ");
+					}
+				
+				else if (c instanceof Trap) // If The Card Is A Trap Card
+					{
+						System.out.printf("%-20s     " + "" + "\n", c.name);
+						System.out.printf("%-100s \n", c.description);
+						System.out.printf("%-100s \n", ((Trap)c).effect);
+						System.out.println("\n__________________________________________________________________________________________________________________________________\n");					
+						System.out.println(" ");
+					}
+				
+				else if (c instanceof Energy) // If The Card Is A Energy Card
+					{
+						
+					}
+				
+				else
+					{
+						
+					}
+				
+				cardId++;
+			}
 		}
 	}
