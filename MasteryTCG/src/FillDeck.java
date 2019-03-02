@@ -99,7 +99,7 @@ public class FillDeck
 		{
 			ArrayList<String> cards = new ArrayList<String>();
 			Scanner userInput = new Scanner(System.in);
-			int numberOfCardsLeft = 30;
+			int numberOfCardsLeft = 60;
 			while (numberOfCardsLeft > 0)
 				{
 					boolean isRealCard = false;
