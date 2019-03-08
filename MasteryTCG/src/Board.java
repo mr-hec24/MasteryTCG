@@ -6,14 +6,17 @@ public class Board {
 
 	static Card[][] board = new Card[height][width];
 
-	public static void addCard(Card card, int x, int y) {
-		if ( board[x][y] == null) {
+	public static void addCard(Card card, int x, int y) 
+	{
+	if ( board[x][y] == null) 
+		{	
 			board[x][y] = card;
 		} 
 
 	}
 
-	public static Card getCards(int x, int y) {
+	public static Card getCards(int x, int y) 
+	{
 		Card Return;
 		Return = board[x][y];
 

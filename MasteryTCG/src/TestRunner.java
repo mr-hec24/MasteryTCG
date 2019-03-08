@@ -4,14 +4,8 @@ import java.text.*;
 
 public class TestRunner
 	{
-		public static void main(String[] args)
+		public static void main(String[] args) throws IOException
 		{
-			try
-				{
-					FillDeck.askUserWhicDeck();
-				} catch (IOException e1)
-				{
-					e1.printStackTrace();
-				}
+			FillDeck.askUserWhicDeck();
 		}
 	}
