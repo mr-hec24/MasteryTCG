@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 public class FillDeck
 	{
+		
+		//FINISH THE createDeck(File f) WITH ALL OF THE POSSIBLE OPTIONS OF CARDS
+		//ALSO PROBABLY START TO CREATE THE PRE-MADE DECK FILES
 		public static void fillDeck()
 		{
 			
@@ -13,7 +16,7 @@ public class FillDeck
 		/* This method asks the user whether they want to use a pre-made
 		deck, or create their own. Depending on what they choose, this
 		method either creates a new deck, or offers some pre-made decks*/
-		public static void askUserWhicDeck() throws IOException
+		public static ArrayList<Card> askUserWhicDeck() throws IOException
 		{
 			Scanner userInput = new Scanner(System.in);
 			boolean choosing = true;
@@ -24,39 +27,50 @@ public class FillDeck
 					int choice = userInput.nextInt();
 					if (choice == 1)
 						{
-							showPreMadeDecks();
-							choosing = false;
+							return showPreMadeDecks();
 						}
 					else if (choice == 2)
 						{
-							createDeck();
-							choosing = false;
+							return createDeck(createDeck());
 						}
 				} while (choosing);
 			
-			
+			return null;
 		}
 		
 		/* This should honestly be self explanatary.
 		   This method shows the pre-made decks and
 		   lets the user choose their deck to play with. */
-		public static void showPreMadeDecks()
+		public static ArrayList<Card> showPreMadeDecks() throws IOException
 		{
+			System.out.println("Which deck would you like?");
+			System.out.println("1) Drunk Pyromancer");
+			System.out.println("2) Something Else");
+			Scanner userInput = new Scanner(System.in);
+			int choice = userInput.nextInt();
+			switch (choice)
+			{
+				case 1:
+						{
+							return createDeck(new File(" .txt"));
+						}
+			}
 			
+			return null;
 		}
 		
 		/* This method is basically the runner of the Create
 		   Your Own Deck choice. It creates a new file with
 		   the temporary name of "NewDeck.txt", and it writes
 		   within that file the cards that the user chooses. */
-		public static void createDeck() throws IOException
+		public static File createDeck() throws IOException
 		{
 			
 			System.out.println("Create your own deck.");
 			File deck = new File("NewDeck.txt");
 			deck.createNewFile();
 			
-			transcribeChosenCardsOntoFile(deck, chooseCards());
+			return transcribeChosenCardsOntoFile(deck, chooseCards());
 		}
 		
 		/* This method reads a file, and prints out the whole deck 
@@ -78,7 +92,7 @@ public class FillDeck
 		   writes this information into the File f
 @param     File f is the file it is writing into
 @param     ArrayList<String> cards is the ArrayList it is copying into the file     */
-		public static void transcribeChosenCardsOntoFile(File f, ArrayList<String> cards) throws IOException
+		public static File transcribeChosenCardsOntoFile(File f, ArrayList<String> cards) throws IOException
 		{
 			FileOutputStream fos = new FileOutputStream(f);
 			for (String data: cards)
@@ -87,7 +101,25 @@ public class FillDeck
 				}
 			
 			printOutFinishedDeck(f);
-			
+			return f;
+		}
+		
+		public static ArrayList<Card> createDeck(File f) throws IOException
+		{
+			ArrayList<Card> deck = new ArrayList<Card>();
+			Scanner file = new Scanner(f);
+			while (file.hasNext())
+				{
+					int numberOfCards = file.nextInt();
+					int cardId = file.nextInt();
+					for (int i = 0; i < numberOfCards; i++)
+						{
+							
+							// Add All Of The Possible Card Options
+							//deck.add(new Hero(Documentization.documentCards().get(cardId)));
+						}
+				}
+			return deck;
 		}
 		
 		/* This method is where the user chooses different cards they 
