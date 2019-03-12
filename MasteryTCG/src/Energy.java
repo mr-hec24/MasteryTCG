@@ -6,12 +6,22 @@ public class Energy extends Card
 		protected int worth;
 		protected String effect;
 		
-		public Energy(int w) // Normal Energy
+		public Energy (Card c)
+		{
+			name = ((Energy)c).name;
+			description = ((Energy)c).description;
+			image = ((Energy)c).image;
+			worth = ((Energy)c).worth;
+			effect = ((Energy)c).effect;
+		}
+		
+		public Energy(String n, int w) // Normal Energy
 			{
-				name = "Energy";
+				name = n;
 				description = "Energy used for summoning Heroes and casting Spells";
 				image = "image.jpg";
 				worth = w;
+				effect = null;
 			}
 		
 		public Energy(String n, String d, String i, int w, String e) // Special Cards

@@ -44,7 +44,7 @@ public class FillDeck
 		public static ArrayList<Card> showPreMadeDecks() throws IOException
 		{
 			System.out.println("Which deck would you like?");
-			System.out.println("1) Drunk Pyromancer");
+			System.out.println("1) BDEN's Deck");
 			System.out.println("2) Something Else");
 			Scanner userInput = new Scanner(System.in);
 			int choice = userInput.nextInt();
@@ -52,7 +52,7 @@ public class FillDeck
 			{
 				case 1:
 						{
-							return createDeck(new File(" .txt"));
+							return createDeck(new File("BDEN's Deck.txt"));
 						}
 			}
 			
@@ -112,11 +112,38 @@ public class FillDeck
 				{
 					int numberOfCards = file.nextInt();
 					int cardId = file.nextInt();
+					Card card = Documentization.documentCards().get(cardId);
 					for (int i = 0; i < numberOfCards; i++)
 						{
-							
-							// Add All Of The Possible Card Options
-							//deck.add(new Hero(Documentization.documentCards().get(cardId)));
+							if (card instanceof Hero)
+								{
+									//deck.add(new Hero(card));
+								}
+							else if (card instanceof Supporter)
+								{
+									deck.add(new Supporter(card));
+								}
+							else if (card instanceof Spell)
+								{
+									deck.add(new Spell(card));
+								}
+							else if (card instanceof Environment)
+								{
+									deck.add(new Environment(card));
+								}
+							else if (card instanceof Trap)
+								{
+									deck.add(new Trap(card));
+								}
+							else if (card instanceof Item)
+								{
+									deck.add(new Item(card));
+								}
+							else if (card instanceof Energy)
+								{
+									deck.add(new Energy(card));
+								}
+								
 						}
 				}
 			return deck;

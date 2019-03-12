@@ -5,6 +5,14 @@ public class Environment extends Card
 	{
 		protected String effect;
 		
+		public Environment(Card c)
+		{
+			name = ((Environment)c).name;
+			description = ((Environment)c).description;
+			image = ((Environment)c).image;
+			effect = ((Environment)c).effect;
+		}
+		
 		public Environment(String n, String d, String i, String e)
 		{
 			name = n;

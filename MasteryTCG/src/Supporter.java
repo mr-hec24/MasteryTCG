@@ -5,6 +5,14 @@ public class Supporter extends Card
 	{
 		protected String effect;
 		
+		public Supporter(Card c)
+		{
+			name = ((Supporter)c).name;
+			description = ((Supporter)c).description;
+			effect = ((Supporter)c).effect;
+			image = ((Supporter)c).image;
+		}
+		
 		public Supporter(String n, String d, String e, String i)
 		{
 			name = n;
@@ -12,16 +20,6 @@ public class Supporter extends Card
 			effect = e;
 			image = i;
 		}
-
-		public String getEffect()
-			{
-				return effect;
-			}
-
-		public void setEffect(String effect)
-			{
-				this.effect = effect;
-			}
 		
 		
 	}
