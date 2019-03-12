@@ -16,16 +16,22 @@ public class Board {
 		return board;
 	}
 
-	public void addCard(Card card, int x, int y) {
-		if ( this.board[x][y] == null) {
-			this.board[x][y] = card;
+
+	public static void addCard(Card card, int x, int y) 
+	{
+	if ( board[x][y] == null) 
+		{	
+			board[x][y] = card;
 		} 
 
 	}
 
-	public Card getCard(int x, int y) {
-		return this.board[x][y];
+	public static Card getCards(int x, int y) 
+	{
+		Card Return;
+		Return = board[x][y];
 
+		return Return;
 	}
 
 	
