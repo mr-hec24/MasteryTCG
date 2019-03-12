@@ -10,6 +10,9 @@ public class Hero extends Card
 		protected int toHitModifier;
 		protected int armorClass;
 		protected Item item;
+		protected boolean isOnSideA;
+		//isOnSideA should be true if that player is on the south side of the board
+		
 		
 		public Hero (String n, String d, String i, int lvl, int hp, int sp, ArrayList<Effects> c, int hm, int ac)
 		{
