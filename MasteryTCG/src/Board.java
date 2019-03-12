@@ -1,10 +1,21 @@
 
 public class Board {
 
-	static int height = 5;
-	static int width = 5;
+	protected int height;
+	protected int width;
+	protected Card[][] board;
+	
+	public Board(int height, int width) {
+		board = new Card[height][width];
 
-	static Card[][] board = new Card[height][width];
+	}
+	
+	
+
+	private Card[][] getBoard() {
+		return board;
+	}
+
 
 	public static void addCard(Card card, int x, int y) 
 	{
@@ -21,9 +32,37 @@ public class Board {
 		Return = board[x][y];
 
 		return Return;
-
 	}
 
+	
+	public void moveCard(int x, int y, int moveX, int moveY) {
+		
+		//X, Y are the coordinates of the card being moved
+		//the moveX , moveY variables say which direction to move,
+		//+x moves forward -x moves backward
+		//+y moves right, -y moves left
+		
+		Card currentCard = this.board[x][y];
+		boolean isOnSideA = currentCard.owner.isOnSideA;
+		
+		//adjust the move variables
+		if(isOnSideA) {
+			moveX = moveX*-1;
+			moveY = moveY*-1;
+		}
+		
+		//check to make sure the tile moving to is empty
+		if(this.board[x+moveX][y+moveY]==null) {
+			this.board[x+moveX][y+moveY] = this.board[x][y];
+			this.board[x][y] = null;
+			
+		}
+		
+		 
+		
+		
+	}
+	
 }
 
 //FINAL PS I DIDNT TEST ANY OF THIS, IDK HOW THE REST OF YOUR TEST SOFT WORKS, SO GOOD LUCK I GUESS!
