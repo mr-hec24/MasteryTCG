@@ -5,25 +5,48 @@ import java.util.Scanner;
 
 public class FillDeck
 	{
+		// This is mainly just so that I could send out messages easier.
+		static String msg;
 		
-		//FINISH THE createDeck(File f) WITH ALL OF THE POSSIBLE OPTIONS OF CARDS
-		//ALSO PROBABLY START TO CREATE THE PRE-MADE DECK FILES
-		public static void fillDeck()
+		public static Player fillDeck() throws IOException
 		{
+			msg = "GREETINGS! WHAT IS YOUR NAME?";
+			TestRunner.printOut(msg.split(""), 50);
 			
+			Scanner userInput = new Scanner (System.in);
+			String name = userInput.nextLine();
+			
+			msg = "WELCOME, " + name.toUpperCase() + "!";
+			TestRunner.printOut(msg.split(""), 50);
+			
+			ArrayList<Card> deck = askUserWhichDeck();
+			Player p = new Player(name, deck);
+			addDeckToPlayer(p, deck);
+			
+			return p;
+		}
+		
+		// This method adds a deck to the player
+		public static void addDeckToPlayer(Player p, ArrayList<Card> deck)
+		{
+			for (Card c : deck)
+				{
+					c.owner = p;
+				}
 		}
 		
 		/* This method asks the user whether they want to use a pre-made
 		deck, or create their own. Depending on what they choose, this
 		method either creates a new deck, or offers some pre-made decks*/
-		public static ArrayList<Card> askUserWhicDeck() throws IOException
+		public static ArrayList<Card> askUserWhichDeck() throws IOException
 		{
 			Scanner userInput = new Scanner(System.in);
 			boolean choosing = true;
 			do
 				{
-					System.out.println("Would you like to use one of our pre-made decks?");
-					System.out.println("[1] Yes\n[2] No");
+					msg = "Would you like to use one of our pre-made decks? \n[1] Yes\n[2] No";
+					TestRunner.printOut(msg.split(""), 100);
+					
 					int choice = userInput.nextInt();
 					if (choice == 1)
 						{
@@ -43,18 +66,29 @@ public class FillDeck
 		   lets the user choose their deck to play with. */
 		public static ArrayList<Card> showPreMadeDecks() throws IOException
 		{
-			System.out.println("Which deck would you like?");
-			System.out.println("1) Drunk Pyromancer");
-			System.out.println("2) Something Else");
-			Scanner userInput = new Scanner(System.in);
-			int choice = userInput.nextInt();
-			switch (choice)
-			{
-				case 1:
-						{
-							return createDeck(new File(" .txt"));
-						}
-			}
+			boolean hasntChosen = true;
+			do
+				{
+					msg = "Which deck would you like?\n1) BDEN's Deck\n2) Something Else";
+					TestRunner.printOut(msg.split(""), 50);
+					
+					Scanner userInput = new Scanner(System.in);
+					int choice = userInput.nextInt();
+					switch (choice)
+					{
+						case 1:
+								{
+									File f = new File ("BDEN's Deck.txt");
+									return createDeck(f);
+								}
+						default:
+								{
+									msg = "DECK NOT FOUND! TRY AGAIN!";
+									TestRunner.dramaticPrintOut(msg.split(""), 50);
+								}
+					}
+				} while (hasntChosen);
+			
 			
 			return null;
 		}
@@ -65,8 +99,9 @@ public class FillDeck
 		   within that file the cards that the user chooses. */
 		public static File createDeck() throws IOException
 		{
+			msg = "Create your own deck.";
+			TestRunner.printOut(msg.split(""), 100);
 			
-			System.out.println("Create your own deck.");
 			File deck = new File("NewDeck.txt");
 			deck.createNewFile();
 			
@@ -104,6 +139,7 @@ public class FillDeck
 			return f;
 		}
 		
+		/*	This method returns a deck that is from File f	*/
 		public static ArrayList<Card> createDeck(File f) throws IOException
 		{
 			ArrayList<Card> deck = new ArrayList<Card>();
@@ -138,9 +174,13 @@ public class FillDeck
 					int cardChoice = 0;
 					while (!isRealCard)
 						{
-							System.out.println("Which card would you like to add to your deck? " + numberOfCardsLeft + " CARDS LEFT!");
+							msg = "Which card would you like to add to your deck? " + numberOfCardsLeft + " CARDS LEFT!";
+							TestRunner.printOut(msg.split(""), 100);
+							
 							showCards();
-							System.out.println("Please type their Card Id.      " + numberOfCardsLeft + " CARDS LEFT!");
+							msg = "Please type their Card Id.      " + numberOfCardsLeft + " CARDS LEFT!";
+							TestRunner.printOut(msg.split(""), 100);
+							
 							cardChoice = userInput.nextInt();
 							try
 								{
@@ -149,7 +189,8 @@ public class FillDeck
 								}
 							catch (Exception e)
 								{
-									System.out.println("THAT'S NOT A REAL CARD!");
+									msg = "THAT'S NOT A REAL CARD!";
+									TestRunner.dramaticPrintOut(msg.split(""), 100);
 									isRealCard = false;
 								}
 						}
@@ -157,7 +198,9 @@ public class FillDeck
 					int amountOfCards;
 					do
 						{
-							System.out.println("How many copies of " + Documentization.documentCards().get(cardChoice).name + "?");
+							msg = "How many copies of " + Documentization.documentCards().get(cardChoice).name + "?";
+							TestRunner.printOut(msg.split(""), 100);
+							
 							userInput = new Scanner(System.in);
 							amountOfCards = userInput.nextInt();
 						} while (Documentization.documentCards().get(cardChoice) instanceof Energy? Documentization.documentCards().get(cardChoice).name.equals("Healing Energy")? amountOfCards > 4 : amountOfCards > 10 : amountOfCards > 4);
