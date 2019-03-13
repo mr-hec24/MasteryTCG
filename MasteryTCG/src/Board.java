@@ -17,7 +17,7 @@ public class Board {
 	}
 
 
-	public static void addCard(Card card, int x, int y) 
+	public void addCard(Card card, int x, int y) 
 	{
 	if ( board[x][y] == null) 
 		{	
@@ -26,7 +26,7 @@ public class Board {
 
 	}
 
-	public static Card getCards(int x, int y) 
+	public Card getCards(int x, int y) 
 	{
 		Card Return;
 		Return = board[x][y];
