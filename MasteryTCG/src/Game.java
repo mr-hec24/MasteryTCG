@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Game
 	{
@@ -36,6 +38,41 @@ public class Game
 					return true;
 				}
 			return false;
+		}
+		
+		public ArrayList<Hero> printPlayersHeroesOnBoard(Player p)
+		{
+			ArrayList<Hero> heroes = new ArrayList<Hero>();
+			int choice = 1;
+			for (Card[] row: board.board)
+				{
+					for (Card c: row)
+						{
+							if (c.owner.equals(p))
+								{
+									if (c instanceof Hero)
+										{
+											TestRunner.printOut("[" + choice + "] " + c.name + "  Speed: " + ((Hero)c).speed , 25);
+											choice++;
+											heroes.add((Hero)c);
+										}
+								}
+						}
+				}
+			return heroes;
+		}
+		
+		public void moveHeroes(Player p)
+		{
+			boolean movingHeroes = true;
+			while (movingHeroes)
+				{
+					TestRunner.printOut("Which Hero Would You Like To Move?", 50);
+					ArrayList<Hero> heroes = printPlayersHeroesOnBoard(p);
+					Scanner userInput = new Scanner(System.in);
+					int choice = userInput.nextInt();
+					// Finish moveHeroes method
+				}
 		}
 		
 		public void nextTurn(Player nextPlayer)

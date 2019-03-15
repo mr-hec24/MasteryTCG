@@ -19,14 +19,59 @@ public class Player
 			deck = d;
 		}
 		
+		public void playGame(Game g)
+		{
+			boolean playingTurn = true;
+			while (playingTurn)
+				{
+					TestRunner.printOut("What Would You Like To Do?\n[1] Play Cards\n[2] Move Heroes\n[3] Attack Enemy\n[4] Use Ability", 50);
+					Scanner userInput = new Scanner(System.in);
+					int choice = userInput.nextInt();
+					switch (choice)
+					{
+						case 1:
+								{
+									playCards(g);
+									break;
+								}
+						case 2:
+								{
+									g.moveHeroes(this);
+									break;
+								}
+						case 3:
+								{
+									break;
+								}
+						case 4:
+								{
+									break;
+								}
+						default:
+								{
+									TestRunner.dramaticPrintOut("DID NOT UNDERSTAND WHAT YOU WANTED TO DO", 50);
+									break;
+								}
+					}
+				}
+		}
+		
 		public void playCards(Game g)
 		{
-			//This is where the player can make it's moves
-			TestRunner.printOut("Which Card Would You Like To Play?", 50);
-			displayCurrentHand();
-			Scanner userInput = new Scanner(System.in);
-			int choice = userInput.nextInt();
-			determineWhetherCardIsPlayable(hand.get(choice -1), g);
+			boolean playingCards = true;
+			while (playingCards)
+				{
+					TestRunner.printOut("Which Card Would You Like To Play?", 50);
+					displayCurrentHand();
+					Scanner userInput = new Scanner(System.in);
+					int choice = userInput.nextInt();
+					determineWhetherCardIsPlayable(hand.get(choice - 1), g);
+					
+					TestRunner.printOut("Would You Like To Play Another Card?\n[1] Yes\n[2] No", 50);
+					userInput = new Scanner (System.in);
+					choice = userInput.nextInt();
+					playingCards = choice == 1? true : false;
+				}
 		}
 		
 		public void determineWhetherCardIsPlayable(Card c, Game g)
@@ -63,10 +108,17 @@ public class Player
 									TestRunner.printOut("Summoning Hero...", 50);
 									portal[freeSpace[choice - 1]] = (Hero) c;
 									hand.remove(c);
+									for (int i = indexOfChargedEnergy(), j = 0; j < ((Hero)c).level; i++, j++)
+										{
+											energyBar[i].isCharged = false;
+										}
 								}
 							else
 								TestRunner.dramaticPrintOut("NO AVAILABLE PORTALS FOR " + c.name.toUpperCase(), 50);
 						}
+					else
+						TestRunner.dramaticPrintOut("NOT ENOUGH CHARGED ENERGY FOR " + c.name.toUpperCase(), 50);
+						
 				}
 			else if (c instanceof Item)
 				{
@@ -97,18 +149,42 @@ public class Player
 				}
 			else if (c instanceof Supporter)
 				{
-					
+					CheckForAnything.checkForEffect(g.currentTurn, c);
 				}
 			else if (c instanceof Spell)
 				{
-					
+					if (numberOfChargedEnergy() >= ((Spell)c).cost)
+						{
+							CheckForAnything.checkForEffect(g.currentTurn, c);
+							for (int i = indexOfChargedEnergy(), j = 0; j < ((Spell)c).cost; i++, j++)
+								{
+									energyBar[i].isCharged = false;
+								}
+						}
+					else
+						TestRunner.dramaticPrintOut("NOT ENOUGH CHARGED ENERGY TO CAST " + c.name.toUpperCase(), 50);
 				}
 			else if (c instanceof Trap)
 				{
-					
+					TestRunner.dramaticPrintOut("CAN'T PLACE DOWN A TRAP UNLESS YOU MOVED A HERO", 50);
 				}
 		}
 
+		public int indexOfChargedEnergy()
+		{
+			int index = 0;
+			for (Energy e: energyBar)
+				{
+					if (e.isCharged)
+						{
+							return index;
+						}
+					index++;
+				}
+			index = -1;
+			return index;
+		}
+		
 		public int numberOfChargedEnergy()
 		{
 			int numberOfChargedEnergy = 0;
