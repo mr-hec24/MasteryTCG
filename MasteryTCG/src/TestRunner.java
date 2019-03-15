@@ -10,8 +10,9 @@ public class TestRunner
 			FillDeck.fillDeck();
 		}
 		
-		public static void dramaticPrintOut(String[] message, int milliseconds) 
+		public static void dramaticPrintOut(String msg, int milliseconds) 
 		{
+			String[] message = msg.split("");
 			for (String s: message)
 				{
 					try
@@ -27,8 +28,9 @@ public class TestRunner
 			System.out.println("");
 		}
 		
-		public static void printOut(String[] message, int milliseconds) 
+		public static void printOut(String msg, int milliseconds) 
 			{
+				String[] message = msg.split("");
 				for (String s: message)
 					{
 						try

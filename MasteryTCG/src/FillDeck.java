@@ -10,14 +10,12 @@ public class FillDeck
 		
 		public static Player fillDeck() throws IOException
 		{
-			msg = "GREETINGS! WHAT IS YOUR NAME?";
-			TestRunner.printOut(msg.split(""), 50);
+			TestRunner.printOut("GREETINGS! WHAT IS YOUR NAME?", 50);
 			
 			Scanner userInput = new Scanner (System.in);
 			String name = userInput.nextLine();
 			
-			msg = "WELCOME, " + name.toUpperCase() + "!";
-			TestRunner.printOut(msg.split(""), 50);
+			TestRunner.printOut("WELCOME, " + name.toUpperCase() + "!", 50);
 			
 			ArrayList<Card> deck = askUserWhichDeck();
 			Player p = new Player(name, deck);
@@ -44,8 +42,7 @@ public class FillDeck
 			boolean choosing = true;
 			do
 				{
-					msg = "Would you like to use one of our pre-made decks? \n[1] Yes\n[2] No";
-					TestRunner.printOut(msg.split(""), 100);
+					TestRunner.printOut("Would you like to use one of our pre-made decks? \n[1] Yes\n[2] No", 100);
 					
 					int choice = userInput.nextInt();
 					if (choice == 1)
@@ -69,8 +66,7 @@ public class FillDeck
 			boolean hasntChosen = true;
 			do
 				{
-					msg = "Which deck would you like?\n1) BDEN's Deck\n2) Something Else";
-					TestRunner.printOut(msg.split(""), 50);
+					TestRunner.printOut("Which deck would you like?\n1) BDEN's Deck\n2) Something Else", 50);
 					
 					Scanner userInput = new Scanner(System.in);
 					int choice = userInput.nextInt();
@@ -83,8 +79,7 @@ public class FillDeck
 								}
 						default:
 								{
-									msg = "DECK NOT FOUND! TRY AGAIN!";
-									TestRunner.dramaticPrintOut(msg.split(""), 50);
+									TestRunner.dramaticPrintOut("DECK NOT FOUND! TRY AGAIN!", 50);
 								}
 					}
 				} while (hasntChosen);
@@ -99,8 +94,7 @@ public class FillDeck
 		   within that file the cards that the user chooses. */
 		public static File createDeck() throws IOException
 		{
-			msg = "Create your own deck.";
-			TestRunner.printOut(msg.split(""), 100);
+			TestRunner.printOut("Create your own deck.", 50);
 			
 			File deck = new File("NewDeck.txt");
 			deck.createNewFile();
@@ -150,9 +144,35 @@ public class FillDeck
 					int cardId = file.nextInt();
 					for (int i = 0; i < numberOfCards; i++)
 						{
-							
-							// Add All Of The Possible Card Options
-							//deck.add(new Hero(Documentization.documentCards().get(cardId)));
+							Card card = Documentization.documentCards().get(cardId);
+							if (card instanceof Energy)
+								{
+									deck.add(new Energy(card));
+								}
+							else if (card instanceof Environment)
+								{
+									deck.add(new Environment(card));
+								}
+							else if (card instanceof Hero)
+								{ 
+									deck.add(new Hero(card));
+								}
+							else if (card instanceof Item)
+								{
+									deck.add(new Item(card));
+								}
+							else if (card instanceof Spell)
+								{
+									deck.add(new Spell(card));
+								}
+							else if (card instanceof Supporter)
+								{
+									deck.add(new Supporter(card));
+								}
+							else if (card instanceof Trap)
+								{
+									deck.add(new Trap(card));
+								}
 						}
 				}
 			return deck;
@@ -174,12 +194,11 @@ public class FillDeck
 					int cardChoice = 0;
 					while (!isRealCard)
 						{
-							msg = "Which card would you like to add to your deck? " + numberOfCardsLeft + " CARDS LEFT!";
-							TestRunner.printOut(msg.split(""), 100);
+							TestRunner.printOut("Which card would you like to add to your deck? " + numberOfCardsLeft + " CARDS LEFT!", 50);
 							
 							showCards();
-							msg = "Please type their Card Id.      " + numberOfCardsLeft + " CARDS LEFT!";
-							TestRunner.printOut(msg.split(""), 100);
+							
+							TestRunner.printOut("Please type their Card Id.      " + numberOfCardsLeft + " CARDS LEFT!", 100);
 							
 							cardChoice = userInput.nextInt();
 							try
@@ -189,8 +208,7 @@ public class FillDeck
 								}
 							catch (Exception e)
 								{
-									msg = "THAT'S NOT A REAL CARD!";
-									TestRunner.dramaticPrintOut(msg.split(""), 100);
+									TestRunner.dramaticPrintOut("THAT'S NOT A REAL CARD!", 100);
 									isRealCard = false;
 								}
 						}
@@ -198,8 +216,7 @@ public class FillDeck
 					int amountOfCards;
 					do
 						{
-							msg = "How many copies of " + Documentization.documentCards().get(cardChoice).name + "?";
-							TestRunner.printOut(msg.split(""), 100);
+							TestRunner.printOut("How many copies of " + Documentization.documentCards().get(cardChoice).name + "?", 100);
 							
 							userInput = new Scanner(System.in);
 							amountOfCards = userInput.nextInt();

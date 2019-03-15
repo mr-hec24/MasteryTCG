@@ -12,7 +12,7 @@ public class Board {
 	
 	
 
-	private Card[][] getBoard() {
+	public Card[][] getBoard() {
 		return board;
 	}
 
