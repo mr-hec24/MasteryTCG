@@ -39,6 +39,8 @@ public class Player
 							energyBar[freeSpace] = (Energy)c;
 							hand.remove(c);
 						}
+					else
+						TestRunner.dramaticPrintOut("CAN'T PLAY ANYMORE ENERGY", 50);
 				}
 			else if (c instanceof Environment)
 				{
@@ -52,13 +54,58 @@ public class Player
 							if (freeSpace != null)
 								{
 									TestRunner.printOut("Where would you like to summon " + c.name + "?", 50);
-									for (int i = 0; i < freeSpace.length; i++)
+									for (int i = 0, choice = 1; i < freeSpace.length; i++, choice++)
 										{
-											System.out.println("[" + i + "] - Portal " + freeSpace[i]);
+											System.out.println("[" + choice + "] - Portal " + freeSpace[i]);
 										}
-									// Add a scanner here so that the player can choose where to summon the hero
+									Scanner userInput = new Scanner(System.in);
+									int choice = userInput.nextInt();
+									TestRunner.printOut("Summoning Hero...", 50);
+									portal[freeSpace[choice - 1]] = (Hero) c;
+									hand.remove(c);
+								}
+							else
+								TestRunner.dramaticPrintOut("NO AVAILABLE PORTALS FOR " + c.name.toUpperCase(), 50);
+						}
+				}
+			else if (c instanceof Item)
+				{
+					boolean availableHero = false;
+					int option = 1;
+					ArrayList<Integer> indexes = new ArrayList<Integer>();
+					for (int i = 0; i < portal.length; i++)
+						{
+							if (portal[i] != null && portal[i].item == null)
+								{
+									availableHero = true;
+									TestRunner.printOut("[" + option + "]" + portal[i].name, 25);
+									option++;
+									indexes.add(i);
 								}
 						}
+					TestRunner.printOut("Which Hero would you like to attach " + c.name + " to?", 25);
+					Scanner userInput = new Scanner(System.in);
+					int choice = userInput.nextInt();
+					TestRunner.printOut("Attaching Item...", 50);
+					portal[indexes.get(choice - 1)].attatchItem((Item) c);
+					hand.remove(c);
+					
+					if (availableHero == false)
+						{
+							TestRunner.dramaticPrintOut("NO AVAILABLE HERO TO ATTACH ITEM TO", 50);
+						}
+				}
+			else if (c instanceof Supporter)
+				{
+					
+				}
+			else if (c instanceof Spell)
+				{
+					
+				}
+			else if (c instanceof Trap)
+				{
+					
 				}
 		}
 

@@ -10,6 +10,9 @@ public class Game
 		
 		public Game(Player p1, Player p2, Board b)
 		{
+			//Replace the following code
+			//Instead, have user create the board here,
+			//and add the players here.
 			player1 = p1;
 			player2 = p2;
 			board = b;
