@@ -8,12 +8,12 @@ public class FillDeck
 		//This Method Is The Runner Of This Class
 		public static Player fillDeck() throws IOException
 		{
-			TestRunner.printOut("GREETINGS! WHAT IS YOUR NAME?", 50);
+			//TestRunner.printOut("GREETINGS! WHAT IS YOUR NAME?", 50);
 			
-			Scanner userInput = new Scanner (System.in);
-			String name = userInput.nextLine();
+//			Scanner userInput = new Scanner (System.in);
+//			String name = userInput.nextLine();
 			
-			TestRunner.printOut("WELCOME, " + name.toUpperCase() + "!", 50);
+			//TestRunner.printOut("WELCOME, " + name.toUpperCase() + "!", 50);
 			
 			ArrayList<Card> deck = askUserWhichDeck();
 			Player p = new Player();
