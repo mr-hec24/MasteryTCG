@@ -10,6 +10,10 @@ public class Game
 		protected Turn currentTurn;
 		protected boolean isOver;
 		
+		/*	This is the constructor of a game,
+		 * 	in which the user can create it's
+		 * 	Players here.
+		 */
 		public Game(Player p1, Player p2, Board b)
 		{
 			//Replace the following code
@@ -25,6 +29,11 @@ public class Game
 			p2.determineSizeOfPortal(this);
 		}
 		
+		/*	This method checks whether the game is over
+		 * 	by checking the amount of points each player
+		 * 	has. If the points are greater than or equal
+		 * 	to 20, that player has won the game.
+		 */
 		public boolean checkIfGameIsOver()
 		{
 			if (player1.points >= 20)
@@ -40,6 +49,12 @@ public class Game
 			return false;
 		}
 		
+		/*	This method just prints out all of the Heroes
+		 * 	that a Player owns.
+		 * 	@param Player p is the player it's checking for
+		 * 	@return Returns an ArrayList of Heroes that are
+		 * 			owned by player p
+		 */
 		public ArrayList<Hero> printPlayersHeroesOnBoard(Player p)
 		{
 			ArrayList<Hero> heroes = new ArrayList<Hero>();
@@ -62,6 +77,10 @@ public class Game
 			return heroes;
 		}
 		
+		/*	This method allows the Player p to choose which
+		 * 	Hero they would like to move, and where to move 
+		 * 	it to
+		 */
 		public void moveHeroes(Player p)
 		{
 			boolean movingHeroes = true;
@@ -75,6 +94,10 @@ public class Game
 				}
 		}
 		
+		/*	This method goes into the nextTurn of Player
+		 * 	nextPlayer. It also checks whether the game
+		 * 	is over yet.
+		 */
 		public void nextTurn(Player nextPlayer)
 		{
 			if (!checkIfGameIsOver())
@@ -86,6 +109,11 @@ public class Game
 				}
 		}
 		
+		/*	This method allows the Player to play an
+		 * 	Environment Card. It also send the previous
+		 * 	environmentInEffect to it's owner's discard
+		 * 	pile.
+		 */
 		public void playEnvironment(Environment e)
 		{
 			if (environmentInEffect != null)

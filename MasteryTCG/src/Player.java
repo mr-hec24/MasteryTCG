@@ -13,10 +13,9 @@ public class Player
 		protected boolean isOnSideA;
 		//isOnSideA should be true if that player is on the south side of the board
 		
-		public Player (String n, ArrayList<Card> d)
+		public Player ()
 		{
-			name = n;
-			deck = d;
+			
 		}
 		
 		public void playGame(Game g)
