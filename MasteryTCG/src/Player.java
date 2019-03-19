@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.*;
 
 public class Player
 	{
@@ -11,11 +12,14 @@ public class Player
 		protected Hero[] portal;
 		protected int points;
 		protected boolean isOnSideA;
+		protected Scanner userInput = new Scanner(System.in);
 		//isOnSideA should be true if that player is on the south side of the board
 		
-		public Player ()
+		public Player () throws IOException
 		{
-			
+			TestRunner.printOut("Welcome player. What is your name?", 50);
+			name = userInput.nextLine();
+			FillDeck.fillDeck();
 		}
 		
 		public void playGame(Game g)
@@ -24,7 +28,6 @@ public class Player
 			while (playingTurn)
 				{
 					TestRunner.printOut("What Would You Like To Do?\n[1] Play Cards\n[2] Move Heroes\n[3] Attack Enemy\n[4] Use Ability", 50);
-					Scanner userInput = new Scanner(System.in);
 					int choice = userInput.nextInt();
 					switch (choice)
 					{

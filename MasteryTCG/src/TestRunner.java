@@ -6,8 +6,8 @@ public class TestRunner
 	{
 		public static void main(String[] args) throws IOException
 		{
-			
-			FillDeck.fillDeck();
+			Player p = new Player();
+			//FillDeck.fillDeck();
 		}
 		
 		public static void dramaticPrintOut(String msg, int milliseconds) 
