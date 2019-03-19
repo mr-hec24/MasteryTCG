@@ -96,10 +96,11 @@ public class FillDeck extends JFrame
 		   within that file the cards that the user chooses. */
 		public static File createDeck() throws IOException
 		{
+			String[] cardChoices = new String[60];
 			File deck = new File("NewDeck.txt");
 			deck.createNewFile();
 			
-			int cardsAvailable = 60;
+			int cardsAvailable = 60, index = 0;
 			while (cardsAvailable > 0)
 				{
 					Object[] cards = Documentization.documentCards().toArray();
@@ -127,11 +128,14 @@ public class FillDeck extends JFrame
 										}
 								}
 							
-							int numberOfCopies = (int) JOptionPane.showInputDialog(frame, "Choose Cards For Your Deck \n" + cardsAvailable + " CARDS LEFT", "Creating Deck", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+							int numberOfCopies = (int) JOptionPane.showInputDialog(frame, "How Many Copies Of " + choice.name + " Would You Like?\n" + cardsAvailable + " CARDS LEFT", "Creating Deck", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+							JOptionPane.showConfirmDialog(frame, "You Chose " + numberOfCopies + " Copies Of " + choice.name + ".\n Is This Right?");
 							
-							for (int i = 0; i < numberOfCopies; i++)
+							cardsAvailable -= numberOfCopies;
+							
+							for (int i = 0; i < numberOfCopies; i++, index++)
 								{
-									// In here, add the Card choice to a file?
+									cardChoices[index] = numberOfCopies + " " + choice.cardId;
 								}
 							
 						}
@@ -143,7 +147,7 @@ public class FillDeck extends JFrame
 			
 			
 			
-			return transcribeChosenCardsOntoFile(deck, chooseCards());
+			return transcribeChosenCardsOntoFile(deck, cardChoices);
 		}
 		
 		/* This method reads a file, and prints out the whole deck 
@@ -165,7 +169,7 @@ public class FillDeck extends JFrame
 		   writes this information into the File f
 @param     File f is the file it is writing into
 @param     ArrayList<String> cards is the ArrayList it is copying into the file     */
-		public static File transcribeChosenCardsOntoFile(File f, ArrayList<String> cards) throws IOException
+		public static File transcribeChosenCardsOntoFile(File f, String[] cards) throws IOException
 		{
 			FileOutputStream fos = new FileOutputStream(f);
 			for (String data: cards)
