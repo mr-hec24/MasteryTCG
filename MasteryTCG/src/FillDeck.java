@@ -2,9 +2,14 @@ import java.io.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.awt.*;
+import javax.swing.*;
 
-public class FillDeck
+public class FillDeck extends JFrame
 	{
+		private static final long serialVersionUID = 1L;
+		static JFrame frame = new JFrame();
+		
 		//This Method Is The Runner Of This Class
 		public static Player fillDeck() throws IOException
 		{
@@ -36,18 +41,21 @@ public class FillDeck
 		method either creates a new deck, or offers some pre-made decks*/
 		public static ArrayList<Card> askUserWhichDeck() throws IOException
 		{
+			
+			
 			Scanner userInput = new Scanner(System.in);
 			boolean choosing = true;
 			do
 				{
-					TestRunner.printOut("Would you like to use one of our pre-made decks? \n[1] Yes\n[2] No", 100);
+					String[] choices = {"Yes", "No"};
+					JFrame frame = new JFrame();
+					String choice = (String) JOptionPane.showInputDialog(frame, "Would You Like To Use One Of Our Pre-Made Decks?", "Choosing Deck", JOptionPane.QUESTION_MESSAGE, null, choices, choices[1]);
 					
-					int choice = userInput.nextInt();
-					if (choice == 1)
+					if (choice.equals("Yes"))
 						{
 							return showPreMadeDecks();
 						}
-					else if (choice == 2)
+					else if (choice.equals("No"))
 						{
 							return createDeck(createDeck());
 						}
@@ -64,20 +72,16 @@ public class FillDeck
 			boolean hasntChosen = true;
 			do
 				{
-					TestRunner.printOut("Which deck would you like?\n1) BDEN's Deck\n2) Something Else", 50);
+					String[] decks = {"BDEN's Deck"};
+					JFrame frame = new JFrame();
+					String choice = (String) JOptionPane.showInputDialog(frame, "Which Pre-Made Deck Would You Like?", "Choosing Deck", JOptionPane.QUESTION_MESSAGE, null, decks, decks[0]);
 					
-					Scanner userInput = new Scanner(System.in);
-					int choice = userInput.nextInt();
 					switch (choice)
 					{
-						case 1:
+						case "BDEN's Deck":
 								{
 									File f = new File ("BDEN's Deck.txt");
 									return createDeck(f);
-								}
-						default:
-								{
-									TestRunner.dramaticPrintOut("DECK NOT FOUND! TRY AGAIN!", 50);
 								}
 					}
 				} while (hasntChosen);
@@ -92,10 +96,52 @@ public class FillDeck
 		   within that file the cards that the user chooses. */
 		public static File createDeck() throws IOException
 		{
-			TestRunner.printOut("Create your own deck.", 50);
-			
 			File deck = new File("NewDeck.txt");
 			deck.createNewFile();
+			
+			int cardsAvailable = 60;
+			while (cardsAvailable > 0)
+				{
+					Object[] cards = Documentization.documentCards().toArray();
+					
+					JFrame frame = new JFrame();
+					Card choice = (Card) JOptionPane.showInputDialog(frame, "Choose Cards For Your Deck \n" + cardsAvailable + " CARDS LEFT", "Creating Deck", JOptionPane.QUESTION_MESSAGE, null, cards, cards[0]);
+					JOptionPane.showConfirmDialog(frame, "You Chose \"" + choice.name + "\". \n Is This Correct?");
+					try
+						{
+							Integer[] options;
+							if (choice instanceof Energy && !(choice.name.equals("Healing Energy")))
+								{
+									options = new Integer[10];
+									for (int i = 0, j = 1; i < 10; i++, j++)
+										{
+											options[i] = j;
+										}
+								}
+							else
+								{
+									options = new Integer[4];
+									for (int i = 0, j = 1; i < 4; i++, j++)
+										{
+											options[i] = j;
+										}
+								}
+							
+							int numberOfCopies = (int) JOptionPane.showInputDialog(frame, "Choose Cards For Your Deck \n" + cardsAvailable + " CARDS LEFT", "Creating Deck", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+							
+							for (int i = 0; i < numberOfCopies; i++)
+								{
+									// In here, add the Card choice to a file?
+								}
+							
+						}
+					catch (Exception e)
+						{
+							
+						}
+				}
+			
+			
 			
 			return transcribeChosenCardsOntoFile(deck, chooseCards());
 		}
