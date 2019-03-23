@@ -90,6 +90,27 @@ public class FillDeck extends JFrame
 			return null;
 		}
 		
+		/*	This method removes a card from an array
+		 * 	@param Card c is the target you want to remove
+		 * 		   Object[] array is the array you want to remove it from
+		 * 	@return returns a new Object[] that without Card c
+		 */
+		public static Object[] removeCard(Card c, Object[] array)
+		{
+			Object[] newArray = new Object[array.length - 1];
+			
+			for (int i = 0, index = 0; i < array.length; i++)
+				{
+					if (!array[i].equals(c))
+						{
+							newArray[index] = array[i];
+							index++;
+						}
+				}
+			
+			return newArray;
+		}
+		
 		/* This method is basically the runner of the Create
 		   Your Own Deck choice. It creates a new file with
 		   the temporary name of "NewDeck.txt", and it writes
@@ -100,11 +121,10 @@ public class FillDeck extends JFrame
 			File deck = new File("NewDeck.txt");
 			deck.createNewFile();
 			
+			Object[] cards = Documentization.documentCards().toArray();
 			int cardsAvailable = 60, index = 0;
 			while (cardsAvailable > 0)
 				{
-					Object[] cards = Documentization.documentCards().toArray();
-					
 					JFrame frame = new JFrame();
 					Card choice = (Card) JOptionPane.showInputDialog(frame, "Choose Cards For Your Deck \n" + cardsAvailable + " CARDS LEFT", "Creating Deck", JOptionPane.QUESTION_MESSAGE, null, cards, cards[0]);
 					JOptionPane.showConfirmDialog(frame, "You Chose \"" + choice.name + "\". \n Is This Correct?");
@@ -133,6 +153,9 @@ public class FillDeck extends JFrame
 							
 							cardsAvailable -= numberOfCopies;
 							
+							if ((numberOfCopies == 4 && !choice.name.equals("Energy")) || (numberOfCopies == 10 && choice.name.equals("Energy")))
+									cards = removeCard(choice, cards);
+							
 							for (int i = 0; i < numberOfCopies; i++, index++)
 								{
 									cardChoices[index] = numberOfCopies + " " + choice.cardId;
@@ -141,7 +164,7 @@ public class FillDeck extends JFrame
 						}
 					catch (Exception e)
 						{
-							
+							System.out.println("Something Went Wrong...");
 						}
 				}
 			
