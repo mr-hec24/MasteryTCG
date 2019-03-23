@@ -16,17 +16,48 @@ public class Documentization
 			documentedEffects.add(new Ability(Name, Description, Effect, NumberOfDice, TypeOfDice));				// Non-Ranged rolling ability 			
 */
 /*EFFECT ID*/
-/*#000*/	documentedEffects.add(new Attack("Fireball", "The Drunk Pyromancer conjures a fireball in his hand and blasts it to his enemies when he is drunk.", 2, 2, 4));
-/*#001*/	documentedEffects.add(new Attack("Flamethrower", "The Drunk Pyromancer cups his mouth with his hand, and blows, creating a flamethrower.", 2, 2, 6));
-/*#002*/	documentedEffects.add(new Attack("Katana", "The Sneaky Ninja uses this katana to silence his enemies for the Ninja Brotherhood.", 1, 1, 12));
-/*#003*/	documentedEffects.add(new Attack("Shuriken", "When the Sneaky Ninja is too far away to reach his enemies, he distracts them witht these shurikens.", 2, 3, 6));
-/*#004*/	documentedEffects.add(new Ability("Stealth", "The Sneaky Ninja stealthily sets traps.", "You can set a trap 1 square away from your new position.", 1));
-/*#005*/	documentedEffects.add(new Attack("Acidic Margarita", "He shoots a line of acidic margarita to his enemies.", 2, 6, 4));
-/*#006*/	documentedEffects.add(new Ability("Curse", "The Holy Hector detects an evil aura from far away. So he sends out a curse to that evil aura.","Any item cards the cursed enemy has doesn't have any effects for 1 turn. Can't use this attack again in a row.", 3));
-/*#007*/	documentedEffects.add(new Attack("Holy Water", "The Holy Hector sprinkles his target with holy water.", "If target is an enemy, deal damage. Else, heal damage.", 1, 12, 4));
-/*#008*/	documentedEffects.add(new Attack("Smite","With his wrathfulness, BDEN brings down the power from Above upon it's enemy.",1,11,6));
-/*#009*/	documentedEffects.add(new Attack("Torture","His wrath is channeled from his body to his enemy's body, torturing them.",1,9,8));
 			
+/*#000*/		documentedEffects.add(new Attack("Fireball", "The Drunk Pyromancer conjures a fireball in his hand and blasts it to his enemies when he is drunk.", 2, 2, 4));
+/*#001*/		documentedEffects.add(new Attack("Flamethrower", "The Drunk Pyromancer cups his mouth with his hand, and blows, creating a flamethrower.", 2, 2, 6));
+
+/*#002*/		documentedEffects.add(new Attack("Katana", "The Sneaky Ninja uses this katana to silence his enemies for the Ninja Brotherhood.", 1, 1, 12));
+/*#003*/		documentedEffects.add(new Attack("Shuriken", "When the Sneaky Ninja is too far away to reach his enemies, he distracts them witht these shurikens.", 2, 3, 6));
+/*#004*/		documentedEffects.add(new Ability("Stealth", "The Sneaky Ninja stealthily sets traps.", "You can set a trap 1 square away from your new position.", 1));
+
+/*#005*/		documentedEffects.add(new Attack("Acidic Margarita", "He shoots a line of acidic margarita to his enemies.", 2, 6, 4));
+
+/*#006*/		documentedEffects.add(new Ability("Curse", "The Holy Hector detects an evil aura from far away. So he sends out a curse to that evil aura.","Any item cards the cursed enemy has doesn't have any effects for 1 turn. Can't use this attack again in a row.", 3));
+/*#007*/		documentedEffects.add(new Attack("Holy Water", "The Holy Hector sprinkles his target with holy water.", "If target is an enemy, deal damage. Else, heal damage.", 1, 12, 4));
+
+/*#008*/		documentedEffects.add(new Attack("Smite","With his wrathfulness, BDEN brings down the power from Above upon it's enemy.",1,11,6));
+/*#009*/		documentedEffects.add(new Attack("Torture","His wrath is channeled from his body to his enemy's body, torturing them.",1,9,8));
+
+/*#010*/		documentedEffects.add(new Attack("Intense Stare", "The Jacobian Council is well known for it's stare, because the stare can kill", 1, 10, 6));
+/*#011*/		documentedEffects.add(new Attack("Plasma Blast", "The Jacobian Council shoots acidic plasma from their hands.", 2, 6, 10));
+/*#012*/		documentedEffects.add(new Ability("Multi-Target", "Due to the Jacobian Council consisting of three persons, it can target multiple enemies.", "You can target two different Heroes in range."));
+
+/*#013*/		
+/*#014*/		
+/*#015*/		
+
+/*#016*/		
+/*#017*/		
+/*#018*/		
+
+/*#019*/		
+/*#020*/		
+
+/*#021*/		
+/*#022*/		
+/*#023*/		
+
+/*#024*/		
+/*#025*/		
+
+/*#026*/		
+/*#027*/		
+
+
 			return documentedEffects;
 		}
 		
@@ -120,36 +151,124 @@ public class Documentization
 			documentedCards.add(new Energy("Healing Energy", "This is healing energy. Very surprising...", "image.jpg", 1, "When you use this Energy to cast a Spell, a Hero of your choice heals 5 HP.", 21));
 
 /*#023*/		// The Jacobian Council
-			documentedCards.add(new Card());
+			ArrayList<Effects> jacob = new ArrayList<>();
+			jacob.add(documentedEffects.get(10));
+			jacob.add(documentedEffects.get(11));
+			jacob.add(documentedEffects.get(12));
+			documentedCards.add(new Hero("Jacobian Council", "", "", 7, 60, 1, jacob, 7, 15, 23));
 			
 /*#024*/		//	King Dorian
+			ArrayList<Effects> dorian = new ArrayList<>();
+			dorian.add(documentedEffects.get(13));
+			dorian.add(documentedEffects.get(14));
+			dorian.add(documentedEffects.get(15));
 			documentedCards.add(new Card());
 			
 /*#025*/		// Gizmo
+			ArrayList<Effects> gizmo = new ArrayList<>();
+			gizmo.add(documentedEffects.get(16));
+			gizmo.add(documentedEffects.get(17));
+			gizmo.add(documentedEffects.get(18));
 			documentedCards.add(new Card());
 			
 /*#026*/		// Legendary Lil' Tony
+			ArrayList<Effects> tony = new ArrayList<>();
+			tony.add(documentedEffects.get(19));
+			tony.add(documentedEffects.get(20));
 			documentedCards.add(new Card());
 			
-/*#027*/		//
+/*#027*/		// Fire Dragon Slayer
+			ArrayList<Effects> slayer = new ArrayList<>();
+			slayer.add(documentedEffects.get(21));
+			slayer.add(documentedEffects.get(22));
+			slayer.add(documentedEffects.get(23));
 			documentedCards.add(new Card());
 			
-/*#028*/		//
+/*#028*/		// Mullen Meme Master
+			ArrayList<Effects> mmm = new ArrayList<>();
+			mmm.add(documentedEffects.get(24));
+			mmm.add(documentedEffects.get(25));
 			documentedCards.add(new Card());
 			
-/*#029*/		//
+/*#029*/		// Supreme Leader
+			ArrayList<Effects> supreme = new ArrayList<>();
+			supreme.add(documentedEffects.get(26));
+			supreme.add(documentedEffects.get(27));
 			documentedCards.add(new Card());
 			
-/*#030*/		//
+/*#030*/		// Eternal Ethan
 			documentedCards.add(new Card());
 			
-/*#031*/		//
+/*#031*/		// Shahanocorrect
 			documentedCards.add(new Card());
 			
-/*#032*/		//
+/*#032*/		// Chemistry Nerd
 			documentedCards.add(new Card());
 			
-/*#033*/		//
+/*#033*/		// The Information Dealer
+			documentedCards.add(new Card());
+			
+/*#034*/		// The Seer
+			documentedCards.add(new Card());
+			
+/*#035*/		// Wilson the Wise
+			documentedCards.add(new Card());
+			
+/*#036*/		// Super Caddie
+			documentedCards.add(new Card());
+			
+/*#037*/		// Overachiever
+			documentedCards.add(new Card());
+			
+/*#038*/		// Spy Drone
+			documentedCards.add(new Card());
+			
+/*#039*/		// Chewed Sweater Lace
+			documentedCards.add(new Card());
+			
+/*#040*/		// Windfury Ring
+			documentedCards.add(new Card());
+			
+/*#041*/		// Marker Of Fire
+			documentedCards.add(new Card());
+			
+/*#042*/		// Chili Dog Of Destiny
+			documentedCards.add(new Card());
+			
+/*#043*/		// Decapitating Frisbee
+			documentedCards.add(new Card());
+			
+/*#044*/		// Hair OF Steel
+			documentedCards.add(new Card());
+			
+/*#045*/		// Trap Disarmer
+			documentedCards.add(new Card());
+			
+/*#046*/		// Abortnite Epidemic
+			documentedCards.add(new Card());
+			
+/*#047*/		// Apple Of Death
+			documentedCards.add(new Card());
+			
+/*#048*/		// Cursed Chair
+			documentedCards.add(new Card());
+			
+/*#049*/		// Hector's Distress Call
+			documentedCards.add(new Card());
+			
+/*#050*/		// The Bar
+			documentedCards.add(new Card());
+			
+/*#051*/		// Careful Cone
+			documentedCards.add(new Card());
+			
+/*#052*/		// Jennifer The Jeffer
+			documentedCards.add(new Card());
+			
+/*#053*/		// The Thang
+			documentedCards.add(new Card());
+			
+/*#054*/		// The Formal Thang
 			documentedCards.add(new Card());
 			
 			return documentedCards;
