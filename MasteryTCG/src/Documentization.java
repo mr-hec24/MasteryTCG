@@ -36,26 +36,26 @@ public class Documentization
 /*#011*/		documentedEffects.add(new Attack("Plasma Blast", "The Jacobian Council shoots acidic plasma from their hands.", 2, 6, 10));
 /*#012*/		documentedEffects.add(new Ability("Multi-Target", "Due to the Jacobian Council consisting of three persons, it can target multiple enemies.", "You can target two different Heroes in range."));
 
-/*#013*/		
-/*#014*/		
-/*#015*/		
+/*#013*/		documentedEffects.add(new Attack("Quill Attack", "In defense, to any attacks, King Dorain shoots quills from itself.", 2, 7, 4));
+/*#014*/		documentedEffects.add(new Attack("Nibble", "When King Dorian is near an enemy, he nibbles on the enemy", 1, 4, 8));
+/*#015*/		documentedEffects.add(new Ability("Rivalry", "Born as brothers, lived as friends, Dorian and Gizmo are now enemies.", "If the target is Gizmo, deal twice the damage."));
 
-/*#016*/		
-/*#017*/		
-/*#018*/		
+/*#016*/		documentedEffects.add(new Attack("Quill Attack", "In defense, to any attacks, Gizmo shoots quills from itself.", 2, 5, 6));
+/*#017*/		documentedEffects.add(new Attack("Quill Stab", "When Gizmo is near an enemy, he stabs the enemy with one his quills.", 1, 9, 4));
+/*#018*/		documentedEffects.add(new Ability("Rivalry", "Born as brothers, lived as friends, Dorian and Gizmo are now enemies.", "If the target is Dorian, deal twice the damage."));
 
-/*#019*/		
-/*#020*/		
+/*#019*/		documentedEffects.add(new Attack("Legendary Smite", "Lil' Tony casts down a thunderous smite upon his enemies", "Deals damage to all Heroes 1 sqaure around the target as well. Can't use this attack 2 times in a row.", 1, 11, 8));
+/*#020*/		documentedEffects.add(new Ability("Conditioning", "idk", "Everytime Lil' Tony misses an attack, his base AC drops by 4."));
 
-/*#021*/		
-/*#022*/		
-/*#023*/		
+/*#021*/		documentedEffects.add(new Attack("Fireball", "The Fire Dragon Slayer conjures a fireball in his hand and blasts it to his enemies.", 2, 2, 10));
+/*#022*/		documentedEffects.add(new Attack("Flamethrower", "The Fire Dragon Slayer cups his mouth with his hand, and blows, creating a flamethrower.", 2, 2, 12));
+/*#023*/		documentedEffects.add(new Ability("Fiery Presence", "As a proffesional at slaying fire dragons, you have a fiery presence.", "Any target that attacks this Hero gets Burned for two turns."));
 
-/*#024*/		
-/*#025*/		
+/*#024*/		documentedEffects.add(new Attack("Laser Gun", "Its a laser gun...", 2, 10, 4));
+/*#025*/		documentedEffects.add(new Attack("Stun Grenade", "Its a stun grenade...", 2, 7, 6));
 
-/*#026*/		
-/*#027*/		
+/*#026*/		documentedEffects.add(new Attack("Domination", "idk ", 1, 5, 10));
+/*#027*/		documentedEffects.add(new Attack("Crossbow", "idk", 2, 9, 6));
 
 
 			return documentedEffects;
@@ -155,120 +155,117 @@ public class Documentization
 			jacob.add(documentedEffects.get(10));
 			jacob.add(documentedEffects.get(11));
 			jacob.add(documentedEffects.get(12));
-			documentedCards.add(new Hero("Jacobian Council", "", "", 7, 60, 1, jacob, 7, 15, 23));
+			documentedCards.add(new Hero("Jacobian Council", "The Supreme Council of the universe created by BDEN, whose main purpose is to kill the Holy Hector", "image.jpg", 7, 60, 1, jacob, 7, 15, 23));
 			
 /*#024*/		//	King Dorian
 			ArrayList<Effects> dorian = new ArrayList<>();
 			dorian.add(documentedEffects.get(13));
 			dorian.add(documentedEffects.get(14));
 			dorian.add(documentedEffects.get(15));
-			documentedCards.add(new Card());
+			documentedCards.add(new Hero("King Dorian", "Prohpesized by the Holy Hector, King Dorian is the only creature that can stand up to BDEN's wrath.", "kingDorian.png", 4, 36, 1, dorian, 4, 7, 24));
 			
 /*#025*/		// Gizmo
 			ArrayList<Effects> gizmo = new ArrayList<>();
 			gizmo.add(documentedEffects.get(16));
 			gizmo.add(documentedEffects.get(17));
 			gizmo.add(documentedEffects.get(18));
-			documentedCards.add(new Card());
+			documentedCards.add(new Hero("Gizmo", "Growing up in the shadows of King Dorian, he pledged BDEN to kill King Dorian", "gizmo.jpg", 4, 28, 2, gizmo, 4, 10, 25));
 			
 /*#026*/		// Legendary Lil' Tony
 			ArrayList<Effects> tony = new ArrayList<>();
 			tony.add(documentedEffects.get(19));
 			tony.add(documentedEffects.get(20));
-			documentedCards.add(new Card());
+			documentedCards.add(new Hero("Legendary Lil' Tony", "Growing up as a normal kid, he became a legend by following the Holy Hector", "tony.jpg", 10, 80, 2, tony, 10, 20, 26));
 			
 /*#027*/		// Fire Dragon Slayer
 			ArrayList<Effects> slayer = new ArrayList<>();
 			slayer.add(documentedEffects.get(21));
 			slayer.add(documentedEffects.get(22));
 			slayer.add(documentedEffects.get(23));
-			documentedCards.add(new Card());
+			documentedCards.add(new Hero("Fire Dragon Slayer", "This is a professional at slaying fire dragons.", "slayer.jpg", 3, 25, 1, slayer, 3, 6, 27));
 			
 /*#028*/		// Mullen Meme Master
 			ArrayList<Effects> mmm = new ArrayList<>();
 			mmm.add(documentedEffects.get(24));
 			mmm.add(documentedEffects.get(25));
-			documentedCards.add(new Card());
+			documentedCards.add(new Hero("Mullen Meme Master", "Captain of a spaceship, the Mullen Meme Master visits Earth for the first time.", "mullenMemeMaster.jpg", 5, 39, 2, mmm, 5, 10, 28));
 			
 /*#029*/		// Supreme Leader
 			ArrayList<Effects> supreme = new ArrayList<>();
 			supreme.add(documentedEffects.get(26));
 			supreme.add(documentedEffects.get(27));
-			documentedCards.add(new Card());
+			documentedCards.add(new Hero("Supreme Leader", "This independent woman is the supreme leader of the whole entire world.", "supreme.jpg", 6, 44, 1, supreme, 6, 10, 29));
 			
 /*#030*/		// Eternal Ethan
-			documentedCards.add(new Card());
+			documentedCards.add(new Supporter("Eternal Ethan", "The Eternal Ethan was awaken from near death expeirences.", "Choose a damaged Hero on the board. Return that Hero to your hand, ad remove all effects and damage.", ".jpg", 30));
 			
 /*#031*/		// Shahanocorrect
-			documentedCards.add(new Card());
+			documentedCards.add(new Supporter("Shahanocorrect", "Always trying to correct people, the Shahanocorrect is pretty annoying.", "Look at the top five Cards of yours Opponent's Deck and change thier order.", ".jpg", 31));
 			
 /*#032*/		// Chemistry Nerd
-			documentedCards.add(new Card());
+			documentedCards.add(new Supporter("Chemistry Nerd", "Using his knowledge of chemistry, the Chemistry Nerd can create new Spells.", "Search through your Deck for 2 Spell Cards", ".jpg", 32));
 			
 /*#033*/		// The Information Dealer
-			documentedCards.add(new Card());
+			documentedCards.add(new Supporter("The Information Dealer", "The Information Dealer shares any illegal form of information.", "Search for 2 Trap Cards from the Discard Pile and shuffle them back into your Deck", ".jpg", 33));
 			
 /*#034*/		// The Seer
-			documentedCards.add(new Card());
+			documentedCards.add(new Supporter("The Seer", "With his magical powers, he can not only see the future, but change aspects of it.", "Look at the top of 3 Cards of your Opponent's Deck, and choose 1 to Discard.", ".jpg", 34));
 			
 /*#035*/		// Wilson the Wise
-			documentedCards.add(new Card());
+			documentedCards.add(new Supporter("Wilson the Wise", "Gifted with his wisdom, Wilson the Wise can always give you advice.", "Search for 2 Item Cards, both from either Discard Pile or your Deck", ".jpg", 35));
 			
 /*#036*/		// Super Caddie
-			documentedCards.add(new Card());
+			documentedCards.add(new Supporter("Super Caddie", "He hates all those divots, so he always tries to fix them.", "Choose any facedown Trap and discard it.", ".jpg", 36));
 			
 /*#037*/		// Overachiever
-			documentedCards.add(new Card());
+			documentedCards.add(new Supporter("Overachiever", "Always trying to do everything, the Overachiever can help you overachieve in anything.", "Search for 3 total Cards from either your Discard Pile or Deck. Discard the top card of your Opponent's Deck.", ".jpg", 37));
 			
 /*#038*/		// Spy Drone
-			documentedCards.add(new Card());
+			documentedCards.add(new Supporter("Spy Drone", "Used by the government, Spy Drones are used to mess up your life.", "The Opponent reveals their Hand. Choose one Card to discard.", ".jpg", 38));
 			
 /*#039*/		// Chewed Sweater Lace
-			documentedCards.add(new Card());
+			documentedCards.add(new Item("Chewed Sweater Lace", "Its a Chewed Sweater Lace that no one wants to see.", ".jpg", "Decreases any adjacent Heroes' To Hit Modifier by 1.", 39));
 			
 /*#040*/		// Windfury Ring
-			documentedCards.add(new Card());
+			documentedCards.add(new Item("Windfury Ring", "A ring made out of feather.", ".jpg", "This Hero can attack twice.", 40));
 			
 /*#041*/		// Marker Of Fire
-			documentedCards.add(new Card());
+			documentedCards.add(new Trap("Marker Of Fire", "This marker is capapble of setting of the Fire Alarm at the worst times possible.", ".jpg", "All Opponent's Heroes must move towards this Trap for two turns.", false, 41));
 			
 /*#042*/		// Chili Dog Of Destiny
-			documentedCards.add(new Card());
+			documentedCards.add(new Item("Chili Dog Of Destiny", "", ".jpg", "The attached Hero deals an extra die for damage.", 42));
 			
 /*#043*/		// Decapitating Frisbee
-			documentedCards.add(new Card());
+			documentedCards.add(new Item("Decapitating Frisbee", "This frisbee can be easily mistaken for a normal frisbee.", ".jpg", "You can throw this Item to another Hero that isnt holding an Item. Any Opponent Heroes in the throw take 3d6 damage.", 43));
 			
 /*#044*/		// Hair OF Steel
-			documentedCards.add(new Card());
+			documentedCards.add(new Item("Hair Of Steel", "The Drunk Pyromancer's secret gel can turn your hair into steel.", ".jpg", "The attached Hero increases it's base AC by 5.", 44));
 			
 /*#045*/		// Trap Disarmer
+			documentedCards.add(new Item("Trap Disarmer", "Its a trap disarmer", ".jpg", "When the attached Hero lands on a trap, roll a d20 + to hit Modifier to disarm. You suceed if you roll a 10 or higher.", 45));
+			
+/*#046*/		// Apple Of Death
+			documentedCards.add(new Trap("Apple Of Death", "Its a poisoned apple... but worse.", ".jpg", "The Hero that eats the Apple Of Death takes 2d12 damage.", true, 46));
+			
+/*#047*/		// Cursed Chair
+			documentedCards.add(new Trap("Cursed Chair", "Its a cursed chair.", ".jpg", "The Hero that sits on this Trap can't move and takes 2d4 damage for 2 turns.", true, 47));
+			
+/*#048*/		// Hector's Distress Call
+			documentedCards.add(new Trap("Hector's Distress Call", "The holy Hector rees", ".jpg", "All Heroes on the Players Arena must spend their turn moving towards this Trap.", false, 48));
+			
+/*#049*/		// The Bar
+			documentedCards.add(new Environment("The Bar", "It's a typical bar.", ".jpg", "Each turn, you can look at the top 3 Cards of a Deck of your choice, and Discard 1 Card.", 49));
+			
+/*#050*/		// Careful Cone
+			documentedCards.add(new Spell("Careful Cone", "This spell summons a Careful Cone onto any Trap.", ".jpg", "When you cast this, all of your Opponent's Trap Cards are Disarmed and Discarded.", 4, 50));
+			
+/*#051*/		// Jennifer The Jeffer
+			documentedCards.add(new Supporter("Jennifer the Jeffer", "This is a strange creature. No one actually know what it is.", ".jpg", "Shuffle a Hero and Item from your Hand into your Deck, then search for a different Hero and Item.", 51));
+			
+/*#052*/		// The Thang
 			documentedCards.add(new Card());
 			
-/*#046*/		// Abortnite Epidemic
-			documentedCards.add(new Card());
-			
-/*#047*/		// Apple Of Death
-			documentedCards.add(new Card());
-			
-/*#048*/		// Cursed Chair
-			documentedCards.add(new Card());
-			
-/*#049*/		// Hector's Distress Call
-			documentedCards.add(new Card());
-			
-/*#050*/		// The Bar
-			documentedCards.add(new Card());
-			
-/*#051*/		// Careful Cone
-			documentedCards.add(new Card());
-			
-/*#052*/		// Jennifer The Jeffer
-			documentedCards.add(new Card());
-			
-/*#053*/		// The Thang
-			documentedCards.add(new Card());
-			
-/*#054*/		// The Formal Thang
+/*#053*/		// The Formal Thang
 			documentedCards.add(new Card());
 			
 			return documentedCards;

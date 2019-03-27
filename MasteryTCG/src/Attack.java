@@ -25,6 +25,7 @@ public class Attack extends Effects
 				typeOfDice = tod;
 		}
 		
+		
 		public int damage()
 		{
 			int damage = 0;
