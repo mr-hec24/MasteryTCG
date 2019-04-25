@@ -102,7 +102,7 @@ public class Game
 		{
 			if (!checkIfGameIsOver())
 				{
-					nextPlayer.drawTopCard();
+					nextPlayer.drawCards(1);
 					nextPlayer.refreshEnergy();
 					nextPlayer.moveUpHeroesFromPortal(board);
 					nextPlayer.playCards(this);

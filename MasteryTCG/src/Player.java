@@ -1,9 +1,20 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import java.io.*;
 
 public class Player
 	{
+		/* This little enum is just a set of constants of
+		 * actions that you can do per turn
+		 */
+		enum Action
+		{
+			PLAY_CARD, MOVE_HEROES, ATTACK, USE_ABILITY 
+		}
 		protected String name;
 		protected ArrayList<Card> hand = new ArrayList<Card>();
 		protected Energy[] energyBar = new Energy[10];
@@ -13,21 +24,30 @@ public class Player
 		protected int points;
 		protected boolean isOnSideA;
 		protected Scanner userInput = new Scanner(System.in);
+		static JFrame frame = new JFrame();
 		//isOnSideA should be true if that player is on the south side of the board
 		
 		public Player () throws IOException
 		{
-			TestRunner.printOut("Welcome player. What is your name?", 50);
-			name = userInput.nextLine();
-			FillDeck.fillDeck();
+			name = JOptionPane.showInputDialog("What Is Your Name?", "Input Name Here");
+			JOptionPane.showMessageDialog(frame, "Welcome, " + name);
+			hand = new ArrayList<Card>();
+			energyBar = new Energy[10];
+			deck = FillDeck.fillDeck();
+			discardPile = new ArrayList<Card>();
+//			isOnSideA = ;	isOnSideA also depends on the Board??
 		}
 		
+		/*	This method is the basic layout of what a player
+		 *	can do on it's turn.
+		 *	@param Game g is the game this player is currently in
+		 */	
 		public void playGame(Game g)
 		{
 			boolean playingTurn = true;
 			while (playingTurn)
 				{
-					TestRunner.printOut("What Would You Like To Do?\n[1] Play Cards\n[2] Move Heroes\n[3] Attack Enemy\n[4] Use Ability", 50);
+					TestRunner.printOut("What Would You Like To Do?\n[1] " + Action.PLAY_CARD + "\n[2] " + Action.MOVE_HEROES + "\n[3] " + Action.ATTACK + "\n[4] " + Action.USE_ABILITY, 50);
 					int choice = userInput.nextInt();
 					switch (choice)
 					{
@@ -286,6 +306,9 @@ public class Player
 			portal = new Hero[g.board.width];
 		}
 		
+		/*	This little method basically makes energy
+		 * 	available to use 
+		 */
 		public void refreshEnergy()
 		{
 			for (Energy e: energyBar)
@@ -294,15 +317,28 @@ public class Player
 				}
 		}
 		
-		public void drawTopCard()
+		/*	This little method should be self explanatory
+		 * 	but just in case, it draws i cards from the deck
+		 * 	and adds it to your hand, removing it from deck
+		 * 	@param int i is how many Cards you wanna draw
+		 */	
+		public void drawCards(int i)
 		{
-			Card topCard = deck.remove(0);
-			hand.add(topCard);
+			for (int j = 0; j < i; j++)
+				{
+					Card topCard = deck.remove(0);
+					hand.add(topCard);
+				}
 		}
 		
+		/*	This little method should be self explanatory
+		 * 	but just in case, it discards a card from the hand
+		 * 	@param Card c is the Card that is discarded
+		 */
 		public void discardCard(Card c)
 		{
 			discardPile.add(c);
+			hand.remove(c);
 		}
 		
 		

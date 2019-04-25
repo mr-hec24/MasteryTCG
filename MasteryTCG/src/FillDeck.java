@@ -11,7 +11,7 @@ public class FillDeck extends JFrame
 		static JFrame frame = new JFrame();
 		
 		//This Method Is The Runner Of This Class
-		public static Player fillDeck() throws IOException
+		public static ArrayList<Card> fillDeck() throws IOException
 		{
 			//TestRunner.printOut("GREETINGS! WHAT IS YOUR NAME?", 50);
 			
@@ -19,12 +19,9 @@ public class FillDeck extends JFrame
 //			String name = userInput.nextLine();
 			
 			//TestRunner.printOut("WELCOME, " + name.toUpperCase() + "!", 50);
-			
 			ArrayList<Card> deck = askUserWhichDeck();
-			Player p = new Player();
-			addDeckToPlayer(p, deck);
 			
-			return p;
+			return askUserWhichDeck();
 		}
 		
 		// This method adds a deck to the player
