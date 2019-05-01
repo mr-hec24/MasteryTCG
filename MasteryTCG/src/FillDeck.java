@@ -13,15 +13,9 @@ public class FillDeck extends JFrame
 		//This Method Is The Runner Of This Class
 		public static ArrayList<Card> fillDeck() throws IOException
 		{
-			//TestRunner.printOut("GREETINGS! WHAT IS YOUR NAME?", 50);
-			
-//			Scanner userInput = new Scanner (System.in);
-//			String name = userInput.nextLine();
-			
-			//TestRunner.printOut("WELCOME, " + name.toUpperCase() + "!", 50);
 			ArrayList<Card> deck = askUserWhichDeck();
 			
-			return askUserWhichDeck();
+			return deck;
 		}
 		
 		// This method adds a deck to the player
@@ -114,12 +108,16 @@ public class FillDeck extends JFrame
 		   within that file the cards that the user chooses. */
 		public static File createDeck() throws IOException
 		{
-			String[] cardChoices = new String[60];
-			File deck = new File("NewDeck.txt");
+			String[] cardChoices = new String[60];							// This String array will hold the card choices that the player chooses
+			File deck = new File("NewDeck.txt");							// File in which the new deck will be held in
 			deck.createNewFile();
 			
-			Object[] cards = Documentization.documentCards().toArray();
-			int cardsAvailable = 60, index = 0;
+			Object[] cards = Documentization.documentCards().toArray();		// The following Object[] holds all the possible cards the user can choose
+			int[] copiesOfCards = new int[cards.length];					// The following int[] will hold the number of copies to it's corresponding card (index wise)
+			for (int i = 0; i < copiesOfCards.length; i++)
+				copiesOfCards[i] = 0;
+			
+			int cardsAvailable = 60, index = 0;								// cardsAvailable is the cards left to add in the deck; 
 			while (cardsAvailable > 0)
 				{
 					JFrame frame = new JFrame();
