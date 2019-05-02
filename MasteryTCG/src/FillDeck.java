@@ -112,7 +112,7 @@ public class FillDeck extends JFrame
 			File deck = new File("NewDeck.txt");							// File in which the new deck will be held in
 			deck.createNewFile();
 			
-			Object[] cards = Documentization.documentCards().toArray();		// The following Object[] holds all the possible cards the user can choose
+			Object[] cards = Database.documentCards().toArray();		// The following Object[] holds all the possible cards the user can choose
 			int[] copiesOfCards = new int[cards.length];					// The following int[] will hold the number of copies to it's corresponding card (index wise)
 			for (int i = 0; i < copiesOfCards.length; i++)
 				copiesOfCards[i] = 0;
@@ -178,7 +178,7 @@ public class FillDeck extends JFrame
 				{
 					int numberOfCards = file.nextInt();
 					int cardId = file.nextInt();
-					System.out.println(numberOfCards + "x " + Documentization.documentCards().get(cardId).name);
+					System.out.println(numberOfCards + "x " + Database.documentCards().get(cardId).name);
 				}
 		}
 		
@@ -210,7 +210,7 @@ public class FillDeck extends JFrame
 					int cardId = file.nextInt();
 					for (int i = 0; i < numberOfCards; i++)
 						{
-							Card card = Documentization.documentCards().get(cardId);
+							Card card = Database.documentCards().get(cardId);
 							if (card instanceof Energy)
 								{
 									deck.add(new Energy(card));
@@ -269,7 +269,7 @@ public class FillDeck extends JFrame
 							cardChoice = userInput.nextInt();
 							try
 								{
-									Documentization.documentCards().get(cardChoice);
+									Database.documentCards().get(cardChoice);
 									isRealCard = true;
 								}
 							catch (Exception e)
@@ -282,11 +282,11 @@ public class FillDeck extends JFrame
 					int amountOfCards;
 					do
 						{
-							TestRunner.printOut("How many copies of " + Documentization.documentCards().get(cardChoice).name + "?", 100);
+							TestRunner.printOut("How many copies of " + Database.documentCards().get(cardChoice).name + "?", 100);
 							
 							userInput = new Scanner(System.in);
 							amountOfCards = userInput.nextInt();
-						} while (Documentization.documentCards().get(cardChoice) instanceof Energy? Documentization.documentCards().get(cardChoice).name.equals("Healing Energy")? amountOfCards > 4 : amountOfCards > 10 : amountOfCards > 4);
+						} while (Database.documentCards().get(cardChoice) instanceof Energy? Database.documentCards().get(cardChoice).name.equals("Healing Energy")? amountOfCards > 4 : amountOfCards > 10 : amountOfCards > 4);
 					numberOfCardsLeft -= amountOfCards;
 					
 
@@ -303,7 +303,7 @@ public class FillDeck extends JFrame
 		public static void showCards()
 		{
 			int cardId = 0;
-			for (Card c: Documentization.documentCards())
+			for (Card c: Database.documentCards())
 				{
 					DecimalFormat number = new DecimalFormat("000");
 					System.out.println("__________________________________________________________________________________________________________________________________\n");					
