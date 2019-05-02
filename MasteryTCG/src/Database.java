@@ -1,7 +1,7 @@
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class Documentization
+public class Database
 	{
 		
 		public static ArrayList<Effects> documentEffects()
@@ -260,20 +260,20 @@ public class Documentization
 			documentedCards.add(new Spell("Careful Cone", "This spell summons a Careful Cone onto any Trap.", ".jpg", "When you cast this, all of your Opponent's Trap Cards are Disarmed and Discarded.", 4, 50));
 			
 /*#051*/		// Jennifer The Jeffer
-			documentedCards.add(new Supporter("Jennifer the Jeffer", "This is a strange creature. No one actually know what it is.", ".jpg", "Shuffle a Hero and Item from your Hand into your Deck, then search for a different Hero and Item.", 51));
+			documentedCards.add(new Supporter("Jennifer the Jeffer", "This is a strange creature. No one actually know what it is. But it will always follow you.", "Shuffle a Hero and Item from your Hand into your Deck, then search for a different Hero and Item.", ".jpg", 51));
 			
 /*#052*/		// The Thang
-			documentedCards.add(new Card());
+		//	documentedCards.add(new Card());
 			
 /*#053*/		// The Formal Thang
-			documentedCards.add(new Card());
+		//	documentedCards.add(new Card());
 			
 			return documentedCards;
 		}
 
 		public static void printOutDocumentedInformation()
 		{
-			ArrayList<Card> deck = Documentization.documentCards();
+			ArrayList<Card> deck = Database.documentCards();
 			int cardId = 0;
 			for (Card c : deck)
 			{
