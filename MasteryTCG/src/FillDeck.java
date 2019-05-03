@@ -48,7 +48,9 @@ public class FillDeck extends JFrame
 						}
 					else if (choice.equals("No"))
 						{
-							return createDeck(createDeck());
+							File temp = createDeck();
+							renameDeck(temp);
+							return createDeck(temp);
 						}
 				} while (choosing);
 			
@@ -81,25 +83,49 @@ public class FillDeck extends JFrame
 			return null;
 		}
 		
-		/*	This method removes a card from an array
-		 * 	@param Card c is the target you want to remove
-		 * 		   Object[] array is the array you want to remove it from
-		 * 	@return returns a new Object[] that without Card c
-		 */
-		public static Object[] removeCard(Card c, Object[] array)
+		/*	This method returns a deck that is from File f	*/
+		public static ArrayList<Card> createDeck(File f) throws IOException
 		{
-			Object[] newArray = new Object[array.length - 1];
-			
-			for (int i = 0, index = 0; i < array.length; i++)
+			ArrayList<Card> deck = new ArrayList<Card>();
+			Scanner file = new Scanner(f);
+			while (file.hasNext())
 				{
-					if (!array[i].equals(c))
+					int numberOfCards = file.nextInt();
+					int cardId = file.nextInt();
+					for (int i = 0; i < numberOfCards; i++)
 						{
-							newArray[index] = array[i];
-							index++;
+							Card card = Database.documentCards().get(cardId);
+							if (card instanceof Energy)
+								{
+									deck.add(new Energy(card));
+								}
+							else if (card instanceof Environment)
+								{
+									deck.add(new Environment(card));
+								}
+							else if (card instanceof Hero)
+								{ 
+									deck.add(new Hero(card));
+								}
+							else if (card instanceof Item)
+								{
+									deck.add(new Item(card));
+								}
+							else if (card instanceof Spell)
+								{
+									deck.add(new Spell(card));
+								}
+							else if (card instanceof Supporter)
+								{
+									deck.add(new Supporter(card));
+								}
+							else if (card instanceof Trap)
+								{
+									deck.add(new Trap(card));
+								}
 						}
 				}
-			
-			return newArray;
+			return deck;
 		}
 		
 		/* This method is basically the runner of the Create
@@ -168,6 +194,27 @@ public class FillDeck extends JFrame
 			return transcribeChosenCardsOntoFile(deck, cardChoices);
 		}
 		
+		/*	This method removes a card from an array
+		 * 	@param Card c is the target you want to remove
+		 * 		   Object[] array is the array you want to remove it from
+		 * 	@return returns a new Object[] that without Card c
+		 */
+		public static Object[] removeCard(Card c, Object[] array)
+		{
+			Object[] newArray = new Object[array.length - 1];
+			
+			for (int i = 0, index = 0; i < array.length; i++)
+				{
+					if (!array[i].equals(c))
+						{
+							newArray[index] = array[i];
+							index++;
+						}
+				}
+			
+			return newArray;
+		}
+		
 		/* This method reads a file, and prints out the whole deck 
 @param     File f is the File it is reading                        */
 		public static void printOutFinishedDeck(File f) throws IOException
@@ -197,51 +244,6 @@ public class FillDeck extends JFrame
 			
 			printOutFinishedDeck(f);
 			return f;
-		}
-		
-		/*	This method returns a deck that is from File f	*/
-		public static ArrayList<Card> createDeck(File f) throws IOException
-		{
-			ArrayList<Card> deck = new ArrayList<Card>();
-			Scanner file = new Scanner(f);
-			while (file.hasNext())
-				{
-					int numberOfCards = file.nextInt();
-					int cardId = file.nextInt();
-					for (int i = 0; i < numberOfCards; i++)
-						{
-							Card card = Database.documentCards().get(cardId);
-							if (card instanceof Energy)
-								{
-									deck.add(new Energy(card));
-								}
-							else if (card instanceof Environment)
-								{
-									deck.add(new Environment(card));
-								}
-							else if (card instanceof Hero)
-								{ 
-									deck.add(new Hero(card));
-								}
-							else if (card instanceof Item)
-								{
-									deck.add(new Item(card));
-								}
-							else if (card instanceof Spell)
-								{
-									deck.add(new Spell(card));
-								}
-							else if (card instanceof Supporter)
-								{
-									deck.add(new Supporter(card));
-								}
-							else if (card instanceof Trap)
-								{
-									deck.add(new Trap(card));
-								}
-						}
-				}
-			return deck;
 		}
 		
 		/* This method is where the user chooses different cards they 
@@ -316,4 +318,14 @@ public class FillDeck extends JFrame
 			System.out.println("__________________________________________________________________________________________________________________________________\n");					
 			System.out.println(" ");
 		}
+	
+		public static void renameDeck(File f)
+		{
+			String name = JOptionPane.showInputDialog("What Would You Like To Name Your Deck?", "Input Name Here (Dont Include .txt)");
+			File temp = new File(name + ".txt");
+			boolean b = f.renameTo(temp);
+			if (b)
+				b = temp.delete();
+		}
+	
 	}
