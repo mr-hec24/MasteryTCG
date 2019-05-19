@@ -32,8 +32,6 @@ public class FillDeck extends JFrame
 		method either creates a new deck, or offers some pre-made decks*/
 		public static ArrayList<Card> askUserWhichDeck() throws IOException
 		{
-			
-			
 			Scanner userInput = new Scanner(System.in);
 			boolean choosing = true;
 			do
@@ -49,8 +47,7 @@ public class FillDeck extends JFrame
 					else if (choice.equals("No"))
 						{
 							File temp = createDeck();
-							renameDeck(temp);
-							return createDeck(temp);
+							return createDeck(renameDeck(temp));
 						}
 				} while (choosing);
 			
@@ -169,7 +166,7 @@ public class FillDeck extends JFrame
 										}
 								}
 							
-							int numberOfCopies = (int) JOptionPane.showInputDialog(frame, "How Many Copies Of " + choice.name + " Would You Like?\n" + cardsAvailable + " CARDS LEFT", "Creating Deck", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+							int numberOfCopies = (int) JOptionPane.showInputDialog(frame, "How Many Copies Of " + choice.name + " Would You Like?\n" + cardsAvailable + " CARDS LEFT", "Creating Deck", JOptionPane.QUESTION_MESSAGE, null, options, options[3]);
 							JOptionPane.showConfirmDialog(frame, "You Chose " + numberOfCopies + " Copies Of " + choice.name + ".\n Is This Right?");
 							
 							cardsAvailable -= numberOfCopies;
@@ -177,15 +174,14 @@ public class FillDeck extends JFrame
 							if ((numberOfCopies == 4 && !choice.name.equals("Energy")) || (numberOfCopies == 10 && choice.name.equals("Energy")))
 									cards = removeCard(choice, cards);
 							
-							for (int i = 0; i < numberOfCopies; i++, index++)
-								{
-									cardChoices[index] = numberOfCopies + " " + choice.cardId;
-								}
+							cardChoices[index] = numberOfCopies + " " + choice.cardId;
+							index++;
 							
 						}
 					catch (Exception e)
 						{
 							System.out.println("Something Went Wrong...");
+							System.out.println(e);
 						}
 				}
 			
@@ -236,12 +232,16 @@ public class FillDeck extends JFrame
 @param     ArrayList<String> cards is the ArrayList it is copying into the file     */
 		public static File transcribeChosenCardsOntoFile(File f, String[] cards) throws IOException
 		{
-			FileOutputStream fos = new FileOutputStream(f);
+			FileWriter fileWriter = new FileWriter(f);
+			PrintWriter writer = new PrintWriter(fileWriter);
 			for (String data: cards)
 				{
-					fos.write(data.getBytes());
+					if (data != null) 
+						{
+						writer.println(data);
+						}
 				}
-			
+			writer.close();
 			printOutFinishedDeck(f);
 			return f;
 		}
@@ -319,13 +319,19 @@ public class FillDeck extends JFrame
 			System.out.println(" ");
 		}
 	
-		public static void renameDeck(File f)
+		public static File renameDeck(File f)
 		{
 			String name = JOptionPane.showInputDialog("What Would You Like To Name Your Deck?", "Input Name Here (Dont Include .txt)");
 			File temp = new File(name + ".txt");
 			boolean b = f.renameTo(temp);
 			if (b)
-				b = temp.delete();
+				{
+					//b = temp.delete();
+					System.out.println("SUCCESFULLY RENAMED TO " + temp);
+				}
+			
+			return temp;
+				
 		}
 	
 	}
